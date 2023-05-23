@@ -1,0 +1,33 @@
+ - Présentation des voitures
+Afficher images voitures + information voiture → stockage dans la bdd
+ Numéro d’immatriculation : chaîne de caractères
+ Marque : chaîne de caractères
+ Modèle : chaîne de caractères
+ Date de première mise en circulation du véhicule : type date
+ Prix de la voiture : type réel
+ Date de rentrée au garage : type date
+ Nombre de chevaux fiscaux : type entier
+ Une description : chaîne de caractères
+
+ - Structure des pages du site
+- mentions légales
+- charte de confidentialité
+- conditions générales d'utilisation
+- à propos
+
+ - Connexion bdd & CRUD
+Création d'une fonction pour se connecter à la bdd + fonctions pour gérer les CRUD
+
+ - Back end sécurisé
+système authentification
+
+ - Page pour gérer les voitures dans la bdd
+Création d'un systeme permettant l'ajout, le retrait et la modification des voitures dans la bdd
+
+ - Création bdd + MCD
+Choix type de bdd + représentation graphique bdd
+
+ - Sécurisation projet
+Mise en place de solution pour permettre un accès sécurisé au site et à la bdd
+
+ - Réalisation d'un cahier des charges

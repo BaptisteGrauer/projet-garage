@@ -1,0 +1,148 @@
+.contenu {
+    position:absolute;
+    top:0px;
+    left:0;
+    right: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top:80px;
+    padding: 0;
+    padding-bottom: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenu * {
+    margin:10px;
+}
+.formulaire *{
+    text-align: center;
+}
+#liste-categories {
+    margin: 0px;
+    padding: 0px;
+}
+.liste-categories {
+    background-color: #000;/*
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;*/
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    top:180px;
+    left:-1px;
+    right:-1px;
+}
+.categorie {/*
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;*/
+    transition: 0.3s;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 750px;
+    /*  transform: skewX(-20deg);/**/
+}
+.categorie * {
+    transition: 0.3s;
+}
+.categorie:hover {
+    width: 30%;
+    opacity: 100%;
+}
+.categorie:hover * {
+    scale:120%;
+}
+.categorie:not(:hover) {
+    opacity: 50%;
+}
+.categorie > p {
+    color: #0ff;
+    text-shadow: 2px 2px 5px #000;
+    text-align: center;
+    left: -10%;
+    right: -10%;
+    font-size: 50px;
+    /*transform: skewX(20deg);/**/
+}
+.liste-categories:not(:hover) .categorie {
+    opacity: 90%;
+}
+#categorie-citadines {
+    background-image: url('../images/citadines.jpg');
+    background-position: center;
+    background-size:cover;
+}
+#categorie-suvs {
+    background-image: url('../images/suvs.jpg');
+    background-position: center;
+    background-size:cover;
+}
+#categorie-utilitaires {
+    background-image: url('../images/utilitaires.jpg');
+    background-position: center;
+    background-size:cover;
+
+}
+#categorie-motos {
+    background-image: url('../images/motos.jpg');
+    background-position: center;
+    background-size:cover;
+
+}
+#categorie-poids-lourds {
+    background-image: url('../images/camions.jpg');
+    background-position: center;
+    background-size:cover;
+
+}
+/*
+.voiture{
+    background-color: #aaa;
+    border: 3px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+.voiture *{
+    margin: 0px;
+    padding: 0px;
+}
+.voiture > ul > li{
+    list-style-type: none;
+    padding: 5px;
+}
+.voiture > img {
+    max-width: 300px;
+}
+*/
+.formulaire {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-admin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.section-admin * {
+    text-align: center;
+}
+
+.section-admin>* {
+    border: 3px solid #fff;
+    color: #0ff;
+    width: 300px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message-php {
+    font-family: 'consolas';
+}
