@@ -1,6 +1,6 @@
 body{
     z-index: 0;
-    background-color: #777;
+    background-color: #fff;
     padding: 0px;
 }
 body *{
@@ -14,14 +14,14 @@ ul *{
 }
 a{
     text-decoration: none;
-    color: #0ff;
+    color: #f00;
     transition: 0.3s;
 }
 a:hover {
-    color: #00f;
+    color: #f80;
 }
 table{
-    border: 3px solid #fff;
+    border: 3px solid #000;
 }
 table * {
     margin: 0px;
@@ -29,8 +29,8 @@ table * {
     text-align: center;
 }
 thead *{
-    border: 2px solid #fff;
+    border: 2px solid #000;
 }
 tbody *{
-    border: 1px solid #fff;
+    border: 1px solid #000;
 }

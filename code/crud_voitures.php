@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $dbname = "garage";
 
-// création de la connexion à la base de données
+// connexion à la base de données
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // vérification de la connexion
@@ -25,7 +25,29 @@ function create_voiture($immatriculation, $marque, $modele, $categorie, $date_mi
   }
 }
 
-function read_all_voiture($conn)
+function read_all_voiture($conn) // affiche toutes les voitures dans la bdd
+{
+  $sql = "SELECT * FROM voitures";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      echo 
+      $row["marque"] .
+      $row['modele'] .
+      $row['categorie'] .
+      $row['prix'] .
+      $row['date_entree_garage'] . 
+      $row['puissance'] . " " .
+      $row['type_carburant'] .
+      $row['description'] .
+      $row['photo'];
+    }
+  } else {
+    echo "Aucune voiture trouvée";
+  }
+}
+
+function read_all_voiture_complete($conn) // affiche toutes les voitures dans la bdd avec leurs information complètes
 {
   $sql = "SELECT * FROM voitures";
   $result = $conn->query($sql);
@@ -45,12 +67,13 @@ function read_all_voiture($conn)
       $row['description'] . 
       $row['photo'];
     }
-  } else {
-    echo "Aucun enregistrement trouvé";
+  }
+  else {
+    echo "Aucune voiture trouvée";
   }
 }
 
-function read_all_voiture_text($conn)
+function read_all_voiture_text($conn) // affiche toutes les voitures dans la bdd avec mise en forme HTML
 {
   $sql = "SELECT * FROM voitures";
   $result = $conn->query($sql);
@@ -58,32 +81,63 @@ function read_all_voiture_text($conn)
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
       echo 
-      $row["id_voiture"] .
-      $row["immatriculation"] . 
-      $row["marque"] . 
-      $row['modele'] . 
-      $row['categorie'] . 
-      $row['date_mise_en_circulation'] . 
-      $row['prix'] . 
-      $row['date_entree_garage'] . 
-      $row['puissance'] . 
-      $row['type_carburant'] . 
-      $row['description'] . 
+
+      $row["id_voiture"] . " " .
+      $row["immatriculation"] . " " .
+      $row["marque"] . " " .
+      $row['modele'] . " " .
+      $row['categorie'] . " " .
+      $row['date_mise_en_circulation'] . " " .
+      $row['prix'] . " " .
+      $row['date_entree_garage'] . " " .
+      $row['puissance'] . " " .
+      $row['type_carburant'] . " " .
+      $row['description'] . " " .
       $row['photo'];
     }
   } else {
-    echo "Aucun enregistrement trouvé";
+    echo "Aucune voiture trouvée";
   }
 }
 
-function update_voiture($id, $nom, $email, $telephone, $conn)
+function read_all_voiture_text_last($conn) // affiche les trois dernières voitures ajoutées à la bdd avec mise en forme HTML
 {
-  $sql = "UPDATE voitures SET nom='$nom', email='$email', telephone='$telephone' WHERE id=$id";
+  $sql = "SELECT * FROM voitures ORDER BY id_voiture DESC LIMIT 3";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      echo 
+      "<div class='voiture'><ul>" .
+          "<li><h3>".$row["marque"] . " ". $row['modele'] . "</h3></li>".
+          "<li>Prix : ".$row['prix'] . "CFP</li>".
+          "<li>Puissance : ".$row['puissance'] . " Ch</li>".
+          "<li>Type de carburant : ".$row['type_carburant'] .  "</li>".
+          "<li><a href=''>Voir plus</a></li></ul>".
+      "<img src='".$row['photo']."'></div>";
+    }
+  } else {
+    echo "Aucune voiture trouvée";
+  }
+}
+
+function update_voiture($id, $immatriculation, $marque, $modele, $categorie, $date_mise_en_circulation, $prix, $date_entree_garage, $puissance, $description, $photo, $conn)
+{
+  $sql = "UPDATE voitures SET immatriculation='$immatriculation',
+  marque='$marque',
+  modele='$modele',
+  categorie='$categorie',
+  date_mise_en_circulation='$date_mise_en_circulation',
+  prix='$prix', 
+  date_entree_garage'$date_entree_garage',
+  puissance='$puissance',
+  description='$description',
+  photo='$photo'
+  WHERE id=$id";
 
   if ($conn->query($sql) === TRUE) {
-    return "Enregistrement mis à jour avec succès";
+    return "Information de la voiture mises à jour avec succès";
   } else {
-    return "Erreur lors de la mise à jour de l'enregistrement: " . $conn->error;
+    return "Erreur lors de la mise à jour de la voiture: " . $conn->error;
   }
 }
 

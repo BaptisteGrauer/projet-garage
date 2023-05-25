@@ -24,9 +24,7 @@
     padding: 0px;
 }
 .liste-categories {
-    background-color: #000;/*
-    border-top: 3px solid #fff;
-    border-bottom: 3px solid #fff;*/
+    background-color: #000;
     display: flex;
     justify-content: flex-start;
     width: 100%;
@@ -34,9 +32,7 @@
     left:-1px;
     right:-1px;
 }
-.categorie {/*
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;*/
+.categorie {
     transition: 0.3s;
     margin: 0;
     padding: 0;
@@ -44,8 +40,7 @@
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 750px;
-    /*  transform: skewX(-20deg);/**/
+    height: 600px;
 }
 .categorie * {
     transition: 0.3s;
@@ -61,7 +56,6 @@
     opacity: 50%;
 }
 .categorie > p {
-    color: #0ff;
     text-shadow: 2px 2px 5px #000;
     text-align: center;
     left: -10%;
@@ -100,28 +94,52 @@
     background-size:cover;
 
 }
-/*
+
+.liste-voiture {
+    padding: 0;
+    margin: 0;
+}
+.liste-voiture * {
+    margin: 0;
+    padding: 0;
+}
 .voiture{
-    background-color: #aaa;
-    border: 3px solid #000;
+    border: 2px solid #f00;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
 .voiture *{
     margin: 0px;
     padding: 0px;
 }
+
+.voiture ul {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content:center;
+    width: 280px;
+    height: 300px;
+    z-index: 1;
+    margin-left: -50px;
+    background-color: #ccc;
+    clip-path: polygon(50px 0, 350px 0, 350px 350px, 0 350px);
+}
+
 .voiture > ul > li{
-    list-style-type: none;
-    padding: 5px;
+    text-align: end;
+    padding: 10px;
 }
 .voiture > img {
-    max-width: 300px;
+    max-width: 500px;
+    max-height: 300px;
+    height: fit-content;
 }
-*/
+
 .formulaire {
     display: flex;
     flex-direction: column;
+    border: 2px solid #000
 }
 
 .section-admin {
@@ -135,8 +153,7 @@
 }
 
 .section-admin>* {
-    border: 3px solid #fff;
-    color: #0ff;
+    border: 3px solid #000;
     width: 300px;
     min-height: 100px;
     display: flex;

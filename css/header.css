@@ -4,8 +4,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    padding: 10px;
-    background-color: #fff;
+    transition: 0.3s;
+    background-color: #ccc;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,21 +18,37 @@ header * {
     padding: 0;
 }
 
-header h1 a {
-    color: #000;
-    transition: 0.3s;
+.recherche {
+    margin-right: 60px;
+    display: flex;
+    align-items: center;
 }
 
-header h1 a:hover {
-    color: #00f;
+.recherche * {
+    text-align: justify;
+    padding: 3px;
 }
-#icone-menu-principal {
-    max-width: 40px;
+
+.logout {
+    text-align: center;
 }
+.logout * {
+    padding: 3px;
+}
+
+.logo {
+    display: flex;
+    padding: 0;
+}
+
+.logo * {
+    height: 70px;
+}
+
 
 .menu-principal {
     position: fixed;
-    padding: 10px;
+    padding: 15px;
     right: 0;
     top: 0;
     transition: 0.3s;
@@ -77,12 +93,7 @@ header h1 a:hover {
 }
 
 .menu-principal ul li a {
-    color: #000;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.menu-principal ul li a:hover {
-    color: #00f;
 }

@@ -21,7 +21,7 @@ else {
             <h3>Utilisateurs</h3>
             <h3>Voitures</h3>
             <div class="section-admin">
-                <a><h4>Ajouter une voiture</h4></a>
+                <a href="advanced/voitures/add-voiture.php"><h4>Ajouter une voiture</h4></a>
             </div>
             <h3>Réservations</h3>
             <div class="section-admin">

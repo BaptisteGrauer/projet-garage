@@ -7,12 +7,12 @@
     <body>
         <?php include 'include/header.php'?>
         <section class="contenu">
-            <h2>Création de compte</h2>
+            <h1>Créer un compte</h1>
             <form method="POST" action="ajout-compte.php" class="formulaire">
-                <input type="text" name="email" placeholder="Adresse e-mail">
-                <input type="text" name="nom" placeholder="Nom d'utilisateur">
-                <input type="password" name="mdp" placeholder="mot de passe">
-                <input type="password" name="confirmation-mdp" placeholder="Confirmer le mot de passe">
+                <input type="text" name="email" placeholder="Adresse e-mail" required>
+                <input type="text" name="nom" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="mdp" placeholder="mot de passe" required>
+                <input type="password" name="confirmation-mdp" placeholder="Confirmer le mot de passe" required>
                 <input type="submit" value="Créer le compte">
             </form>
             <p class="message-php">

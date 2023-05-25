@@ -19,7 +19,7 @@ else {
             <h2>Modifier les informations d'un utilisateur</h2>
             <p>Laisser les cases vides pour garder les valeurs d'origine</p>
             <form method="POST" action="update-user.php" class="formulaire">
-                <input type="text" name="uid" placeholder="ID d'utilisateur existant">
+                <input type="text" name="uid" placeholder="ID d'utilisateur existant" required>
                 <input type="text" name="uemail" placeholder="Nouvelle adresse e-mail">
                 <input type="text" name="unom" placeholder="Nouveau nom d'utilisateur">
                 <input type="password" name="umdp" placeholder="Nouveau mot de passe">
@@ -59,12 +59,6 @@ else {
                         $result = $conn->query($sql);
                         $row = $result->fetch_assoc();
                         $mdp = $row["mdp"];
-                    }
-                    if ($pdp == "") {
-                        $sql = "SELECT pdp FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $conn->query($sql);
-                        $row = $result->fetch_assoc();
-                        $pdp = $row["pdp"];
                     }
                     echo update_user($id,$nom,$email,$mdp,$pdp,$conn);
                 }

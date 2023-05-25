@@ -7,12 +7,12 @@
     <body>
         <?php include 'include/header.php'?>
         <section class="contenu">
-            <h2>Connexion</h2>
+            <h1>Connexion</h1>
             <form method="POST" action="connexion.php" class="formulaire">
                 <label for="email">Nom d'utilisateur :</label>
-                <input type="text" name="nom" placeholder="Nom d'utilisateur">
+                <input type="text" name="nom" placeholder="Nom d'utilisateur" required>
                 <label for="mdp">Mot de passe :</label>
-                <input type="password" name="mdp" placeholder="mot de passe">
+                <input type="password" name="mdp" placeholder="mot de passe" required>
                 <input type="submit" value="envoyer">
             </form>
             <p class ="message-php">

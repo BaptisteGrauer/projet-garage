@@ -19,13 +19,13 @@ else {
             <h2>Supprimer</h2>
             <form method="POST" action="delete-user.php" class="formulaire">
                 <p>Supprimer un utilisateur</p>
-                <input type="text" name="dnom" placeholder="Nom d'utilisateur">
+                <input type="text" name="dnom" placeholder="Nom d'utilisateur" required>
                 <input type="submit" value="Supprimer le compte">
             </form>
             <p class="message-php" id="duser">
                     <?php
                         include "../../../../code/crud_users.php";
-                        if ($_SERVER["REQUEST_METHOD"] == "POST" AND $_POST["dnom"] != "") {
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $dnom = $_POST["dnom"];
                             $sql = "SELECT nom FROM utilisateurs WHERE nom='$dnom'";
                             $result = $conn->query($sql);
@@ -40,7 +40,7 @@ else {
                                 }
                             }
                             else {
-                                echo "L'utilisateur n'existe pas";
+                                echo "L'utilisateur $dnom n'existe pas";
                             }
                         }
                     ?>

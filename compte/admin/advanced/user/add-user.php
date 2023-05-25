@@ -19,9 +19,9 @@ else {
             <h2>Ajouter</h2>
             <form method="POST" action="add-user.php" class="formulaire">
                 <p>Créer un nouvel utilisateur</p>
-                <input type="text" name="cemail" placeholder="E-mail utilisateur">
-                <input type="text" name="cnom" placeholder="Nom d'utilisateur">
-                <input type="password" name="cmdp" placeholder="MDP utilisateur">
+                <input type="text" name="cemail" placeholder="E-mail utilisateur" required>
+                <input type="text" name="cnom" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="cmdp" placeholder="MDP utilisateur" required>
                 <input type="submit" value="Créer l'utilisateur">
                 <p class="message-php" id="cuser">
                     <?php

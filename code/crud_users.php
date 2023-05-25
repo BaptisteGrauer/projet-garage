@@ -89,9 +89,9 @@ function read_all_user($conn)
   }
 }
 
-function update_user($id, $nom, $email, $mdp, $pdp, $conn)
+function update_user($id, $nom, $email, $mdp, $conn)
 {
-  $sql = "UPDATE utilisateurs SET nom='$nom', email='$email', mdp='$mdp' , pdp='$pdp' WHERE id_utilisateur=$id";
+  $sql = "UPDATE utilisateurs SET nom='$nom', email='$email', mdp='$mdp' WHERE id_utilisateur=$id";
   if ($conn->query($sql) === TRUE) {
     return "Enregistrement mis à jour avec succès";
   } else {
