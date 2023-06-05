@@ -23,28 +23,28 @@ else {
                 <input type="submit" value="Supprimer le compte">
             </form>
             <p class="message-php" id="duser">
-                    <?php
-                        include "../../../../code/crud_users.php";
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $dnom = $_POST["dnom"];
-                            $sql = "SELECT nom FROM utilisateurs WHERE nom='$dnom'";
-                            $result = $conn->query($sql);
-                            $row = $result->fetch_assoc();
-                            if ($result->num_rows > 0) {
-                                $dnom = $row["nom"];
-                                if ($dnom == "admin"){
-                                    echo "Vous ne pouvez pas supprimer le compte administrateur";
-                                }
-                                else {
-                                    echo delete_user($dnom,$conn);
-                                }
+                <?php
+                    include "../../../../code/crud_users.php";
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $dnom = $_POST["dnom"];
+                        $sql = "SELECT nom FROM utilisateurs WHERE nom='$dnom'";
+                        $result = $conn->query($sql);
+                        $row = $result->fetch_assoc();
+                        if ($result->num_rows > 0) {
+                            $dnom = $row["nom"];
+                            if ($dnom == "admin"){
+                                echo "Vous ne pouvez pas supprimer le compte administrateur";
                             }
                             else {
-                                echo "L'utilisateur $dnom n'existe pas";
+                                echo delete_user($dnom,$conn);
                             }
                         }
-                    ?>
-                </p>
+                        else {
+                            echo "L'utilisateur $dnom n'existe pas";
+                        }
+                    }
+                ?>
+            </p>
             <?php include "all-user.php"?>
         </section>
         <?php include '../../../../include/footer.php'?>

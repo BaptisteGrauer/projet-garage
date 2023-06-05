@@ -10,7 +10,7 @@
         <p>Menu principal</p>
         <ul>
             <li><a href="/index.php"><img src="/include/icons/home.png">Accueil</a></li>
-            <li><a href="/categories/voitures.php"><img src="/include/icons/car.png">Parcourir les voitures</a></li>
+            <li><a href="voitures.php"><img src="/include/icons/car.png">Parcourir les voitures</a></li>
             <?php
                 if (isset($_COOKIE['nom'])){
                     echo "<li><a href='/compte/compte.php'><img src='/include/icons/account.png'>Bienvenue, " . $_COOKIE['nom'] . "</a></li>";

@@ -6,6 +6,7 @@
     <body>
         <?php include '/include/header.php'?>
         <section class="contenu">
+            <h2>Exemple de page</h2>
         </section>
         <?php include '/include/footer.php'?>
     </body>
