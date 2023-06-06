@@ -20,15 +20,15 @@ else {
             <h2>Panneau d'administration</h2>
             <h3>Utilisateurs</h3>
             <div class="section-admin">
-                <a href="advanced/voitures/read-all-users.php"><h4>Voir tous les utilisateurs</h4></a>
+                <a href="advanced/user/read-all-users.php"><img src="../../include/icons/visibility.png"><img src="../../include/icons/group.png"><h4>Voir tous les utilisateurs</h4></a>
             </div>
             <h3>Voitures</h3>
             <div class="section-admin">
-                <a href="advanced/voitures/add-voiture.php"><h4>Ajouter une voiture</h4></a>
+                <a href="advanced/voitures/add-voiture.php"><img src="../../include/icons/add.png"><img src="../../include/icons/car.png"><h4>Ajouter une voiture</h4></a>
             </div>
             <h3>Réservations</h3>
             <div class="section-admin">
-                <a href="advanced/reservations/read-reservation.php"><h4>Voir les réservations</h4></a>
+                <a href="advanced/reservations/read-reservation.php"><img src="../../include/icons/visibility.png"><img src="../../include/icons/cart.png"><h4>Voir toutes les réservations</h4></a>
             </div>
             <a href="advanced/advanced-admin.php">Accéder au panneau d'administration avancé</a>
         </section>

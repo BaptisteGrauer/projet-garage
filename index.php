@@ -12,7 +12,7 @@
             <div class="liste-voiture">
                 <?php 
                     include "code/crud_voitures.php";
-                    read_all_voiture_text_last($conn)
+                    read_3_voiture_text_last($conn)
                 ?>
             </div>
             <h2>Parcourir les véhicules par catégorie</h2>
@@ -26,7 +26,7 @@
             <h2>Véhicules recommandés</h2>
             <div class="liste-voiture">
                 <?php 
-                    read_all_voiture_random($conn);
+                    read_6_voiture_random($conn);
                 ?>
             </div>
             <a href="voitures.php">Voir tout</a>

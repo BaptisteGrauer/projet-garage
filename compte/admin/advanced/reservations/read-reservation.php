@@ -21,7 +21,7 @@ else {
                 <thead>
                     <tr>
                         <th>N° Réservation</th>
-                        <th>Utilisateur</th>
+                        <th>Client</th>
                         <th>Voiture</th>
                         <th>Date de la réservation</th>
                     </tr>

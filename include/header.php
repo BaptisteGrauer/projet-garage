@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <a href="/index.php"><img id="logo-R" src="/include/icons/garageR2.png"></a>
+        <a href="/index.php"><img src="/include/icons/home.png" class="icone"><img id="logo-R" src="/include/icons/garageR2.png"></a>
     </div>
     <form method="post" action="recherche.php" class ="recherche">
         <img src="/include/icons/search.png"><input type="search" name="recherche" placeholder="Rechercher...">
@@ -15,7 +15,7 @@
                 if (isset($_COOKIE['nom'])){
                     echo "<li><a href='/compte/compte.php'><img src='/include/icons/account.png'>Bienvenue, " . $_COOKIE['nom'] . "</a></li>";
                     echo '<form method="POST" action="/logout.php" class="logout"><input type="submit" value="Se déconnecter"></form>';
-                    echo "<li><a href='/compte/reservation.php'><img src='/include/icons/cart.png'>Réservation</a></li>";
+                    echo "<li><a href='/compte/reservation.php'><img src='/include/icons/cart.png'>Réservations</a></li>";
                     if ($_COOKIE['admin'] == 1) {
                         echo "<li><a href='/compte/admin/admin.php'><img src='/include/icons/settings.png'>Panneau d'administration</a></li>";
                     }

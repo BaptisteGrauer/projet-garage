@@ -28,9 +28,11 @@
                 }
             ?>
             <h2>Vos réservations</h2>
-            <?php 
-                read_all_reservation_user($_COOKIE['id'],$conn);
-            ?>
+            <div>
+                <?php 
+                    read_all_reservation_user($_COOKIE['id'],$conn);
+                ?>
+            </div>
             <a href="compte.php">Retour gestion du compte</a>
         </section>
         <?php include '../include/footer.php'?>

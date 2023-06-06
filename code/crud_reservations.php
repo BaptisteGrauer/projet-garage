@@ -1,12 +1,6 @@
 <?php
 include "variables.php";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
 function create_reservation($id_voiture, $id_utilisateur, $date_reservation, $conn)
 {
   $sql = "INSERT INTO reservations (id_voiture, id_utilisateur, date_reservation) VALUES ('$id_voiture', '$id_utilisateur', '$date_reservation')";
@@ -35,7 +29,7 @@ function read_all_reservation($conn)
       $sql_u = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id_utilisateur'";
       $result_u = $conn->query($sql_u);
       $row_u = $result_u->fetch_assoc();
-      echo "<tr><td>" . $row["id_reservation"] . "</td><td>" . $row_u['nom'] . "</td><td>" . $row_v['marque']. " " . $row_v['modele'] . "</td><td>". $row["date_reservation"] . "</td></tr>";
+      echo "<tr><td>" . $row["id_reservation"] . "</td><td>" . $row_u['nom'] . "</td><td>" . $row_v['marque'] . " " . $row_v['modele'] . "</td><td>" . $row["date_reservation"] . "</td></tr>";
     }
   } else {
     echo "Aucune réservation trouvée";
@@ -54,7 +48,7 @@ function read_all_reservation_user($id_utilisateur, $conn)
       $sql_v = "SELECT marque,modele FROM voitures WHERE id_voiture='$id_voiture'";
       $result_v = $conn->query($sql_v);
       $row_v = $result_v->fetch_assoc();
-      echo "Réservation N°". $row["id_reservation"] ." : <ul><li>Véhicule : ". $row_v['marque']. " " . $row_v['modele'] . "</li><li>Date : ". $row["date_reservation"] . "</li></ul>";
+      echo "Réservation N°" . $row["id_reservation"] . " : <ul><li>Véhicule : " . $row_v['marque'] . " " . $row_v['modele'] . "</li><li>Date : " . $row["date_reservation"] . "</li></ul>";
     }
   } else {
     echo "Aucune réservation trouvée";
@@ -64,7 +58,6 @@ function read_all_reservation_user($id_utilisateur, $conn)
 function update_reservation($id_reservation, $id_voiture, $id_utilisateur, $date_reservation, $conn)
 {
   $sql = "UPDATE utilisateurs SET id_voiture='$id_voiture', id_utilisateur='$id_utilisateur', date_reservation='$date_reservation' WHERE id_reservation=$id_reservation";
-
   if ($conn->query($sql) === TRUE) {
     return "Réservation modifiée avec succès";
   } else {

@@ -38,6 +38,7 @@
     right:-1px;
 }
 .categorie {
+    z-index: 0;
     transition: 0.3s;
     margin: 0;
     padding: 0;
@@ -51,6 +52,7 @@
     transition: 0.3s;
 }
 .categorie:hover {
+    z-index: 1;
     width: 30%;
     opacity: 100%;
 }
@@ -129,7 +131,6 @@
 }
 
 .voiture ul {
-    position: relative;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
@@ -148,7 +149,12 @@
 
 .voiture > ul > li{
     text-align: end;
-    padding: 10px;
+    padding: 5px;
+}
+
+.voiture > ul > li > a {
+    display: flex;
+    align-items: center;
 }
 
 .voiture > img {
