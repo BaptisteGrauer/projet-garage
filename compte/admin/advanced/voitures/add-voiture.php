@@ -138,8 +138,8 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                     <input type="text" name="cdescription" placeholder="Description">
                 </div>
                 <div>
-                    <p>Ajouter une photo (optionnel) :</p>
-                    <input type="file" name="imageToUpload">
+                    <p>Ajouter une photo :</p>
+                    <input type="file" name="imageToUpload" required>
                 </div>
                 <input type="submit" value="Ajouter la voiture">
             </form>
@@ -158,10 +158,8 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                             $type_carburant = $_POST['ctype-carburant'];
                             $description = $_POST['cdescription'];
                             if (isset($_FILES['imageToUpload'])) {
-                                move_uploaded_file($_FILES['imageToUpload']['tmp_name'], "C:/laragon/www/projet-garage/images/voitures/" . $_FILES['imageToUpload']['name']);
+                                move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $dir . $_FILES['imageToUpload']['name']);
                                 $photo = "/images/voitures/". $_FILES['imageToUpload']['name'];
-                            } else {
-                                echo "image not found!";
                             }
                             echo create_voiture($immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $type_carburant, $description, $photo , $conn);
                         }

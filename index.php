@@ -11,8 +11,8 @@
             <h2>Dernières entrées dans le garage</h2>
             <div class="liste-voiture">
                 <?php 
-                include "code/crud_voitures.php";
-                read_all_voiture_text_last($conn)
+                    include "code/crud_voitures.php";
+                    read_all_voiture_text_last($conn)
                 ?>
             </div>
             <h2>Parcourir les véhicules par catégorie</h2>
@@ -24,7 +24,12 @@
                 <a href="categories/poids-lourds.php" class="categorie" id="categorie-poids-lourds"><p>Poids lourds</p></a>
             </div>
             <h2>Véhicules recommandés</h2>
-            <div>Exemple de contenu</div>
+            <div class="liste-voiture">
+                <?php 
+                    read_all_voiture_random($conn);
+                ?>
+            </div>
+            <a href="voitures.php">Voir tout</a>
         </section>
         <?php include 'include/footer.php'?>
     </body>

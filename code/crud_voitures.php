@@ -1,9 +1,5 @@
 <?php
-// informations d'identification de la base de données
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "garage";
+include "variables.php";
 
 // connexion à la base de données
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -45,22 +41,21 @@ function read_voiture_id($id, $conn) {
   }
 }
 
-function read_all_voiture($conn) // affiche toutes les voitures dans la bdd
+function read_all_voiture($conn) // affiche toutes les voitures disponibles à la réservation dans la bdd
 {
-  $sql = "SELECT * FROM voitures";
+  $sql = "SELECT * FROM voitures WHERE etat_reservation=0 ORDER BY RAND()";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+      $link = "../details-vehicule.php?id=".$row['id_voiture'] ."";
       echo 
-      $row["marque"] .
-      $row['modele'] .
-      $row['categorie'] .
-      $row['prix'] .
-      $row['date_entree_garage'] . 
-      $row['puissance'] .
-      $row['type_carburant'] .
-      $row['description'] .
-      $row['photo'];
+      "<div class='voiture'><ul>".
+          "<li><h3>".$row["marque"]." ".$row['modele']."</h3></li>".
+          "<li>Prix : ".$row['prix']." CFP</li>".
+          "<li>Puissance : ".$row['puissance']." Ch</li>".
+          "<li>Carburant : ".$row['type_carburant']."</li>".
+          "<li><a href=$link>Voir plus</a></li></ul>".
+      "<img src='".$row['photo']."'></div>";
     }
   } else {
     echo "Aucune voiture trouvée";
@@ -93,27 +88,21 @@ function read_all_voiture_complete($conn) // affiche toutes les voitures dans la
   }
 }
 
-function read_all_voiture_text($conn) // affiche toutes les voitures dans la bdd avec mise en forme HTML
+function read_all_voiture_random($conn) // affiche 6 voitures choisies aléatoirement dans la bdd avec mise en forme HTML
 {
-  $sql = "SELECT * FROM voitures";
+  $sql = "SELECT * FROM voitures WHERE etat_reservation=0 ORDER BY RAND() LIMIT 6";
   $result = $conn->query($sql);
-
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+      $link = "../details-vehicule.php?id=".$row['id_voiture'] ."";
       echo 
-
-      $row["id_voiture"] . " " .
-      $row["immatriculation"] . " " .
-      $row["marque"] . " " .
-      $row['modele'] . " " .
-      $row['categorie'] . " " .
-      $row['date_mise_en_circulation'] . " " .
-      $row['prix'] . " " .
-      $row['date_entree_garage'] . " " .
-      $row['puissance'] . " " .
-      $row['type_carburant'] . " " .
-      $row['description'] . " " .
-      $row['photo'];
+      "<div class='voiture'><ul>" .
+          "<li><h3>".$row["marque"] . " ". $row['modele'] . "</h3></li>".
+          "<li>Prix : ".$row['prix'] . "CFP</li>".
+          "<li>Puissance : ".$row['puissance'] . " Ch</li>".
+          "<li>Carburant : ".$row['type_carburant'] .  "</li>".
+          "<li><a href=$link>Voir plus</a></li></ul>".
+      "<img src='".$row['photo']."'></div>";
     }
   } else {
     echo "Aucune voiture trouvée";
@@ -122,7 +111,7 @@ function read_all_voiture_text($conn) // affiche toutes les voitures dans la bdd
 
 function read_all_voiture_text_categorie($categorie, $conn) // affiche les trois dernières voitures ajoutées à la bdd avec mise en forme HTML
 {
-  $sql = "SELECT * FROM voitures WHERE etat_reserve=0 AND categorie='$categorie'";
+  $sql = "SELECT * FROM voitures WHERE etat_reservation=0 AND categorie='$categorie'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -143,7 +132,7 @@ function read_all_voiture_text_categorie($categorie, $conn) // affiche les trois
 
 function read_all_voiture_text_last($conn) // affiche les trois dernières voitures ajoutées à la bdd avec mise en forme HTML
 {
-  $sql = "SELECT * FROM voitures  WHERE etat_reserve=0 ORDER BY id_voiture DESC LIMIT 3";
+  $sql = "SELECT * FROM voitures WHERE etat_reservation=0 ORDER BY id_voiture DESC LIMIT 3";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -183,9 +172,21 @@ function update_voiture($id, $immatriculation, $marque, $modele, $categorie, $da
   }
 }
 
+function update_voiture_reservation($id_voiture,$etat_reservation,$conn)
+{
+  $sql = "UPDATE voitures SET etat_reservation='$etat_reservation'
+  WHERE id_voiture='$id_voiture'";
+
+  if ($conn->query($sql) === TRUE) {
+    return "Information de la voiture mises à jour avec succès";
+  } else {
+    return "Erreur lors de la mise à jour de la voiture: " . $conn->error;
+  }
+}
+
 function delete_voiture($id, $conn)
 {
-  $sql = "DELETE FROM voitures WHERE id_voiture=$id";
+  $sql = "DELETE FROM voitures WHERE id_voiture='$id'";
 
   if ($conn->query($sql) === TRUE) {
     return "Voiture supprimée avec succès";

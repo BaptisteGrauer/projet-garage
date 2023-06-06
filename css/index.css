@@ -7,6 +7,10 @@ body *{
     /*border: 1px solid blue;/*Affiche toutes les boîtes, permet de bien régler les règles css*/
     font-family: 'Open Sans', sans-serif;
 }
+h1 {
+    font-size: 30px;
+    font-weight: bolder;
+}
 ul *{
     padding: 0;
     margin: 0;

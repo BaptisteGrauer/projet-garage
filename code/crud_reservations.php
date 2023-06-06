@@ -1,62 +1,83 @@
 <?php
-// informations d'identification de la base de données
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "garage";
+include "variables.php";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// vérification de la connexion
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-function create_reservation($nom, $email, $telephone, $conn)
+function create_reservation($id_voiture, $id_utilisateur, $date_reservation, $conn)
 {
-  $sql = "INSERT INTO utilisateurs (nom, email, telephone) VALUES ('$nom', '$email', '$telephone')";
+  $sql = "INSERT INTO reservations (id_voiture, id_utilisateur, date_reservation) VALUES ('$id_voiture', '$id_utilisateur', '$date_reservation')";
 
   if ($conn->query($sql) === TRUE) {
-    return "Enregistrement créé avec succès";
+    return "Réservation créée avec succès";
   } else {
-    return "Erreur lors de la création de l'enregistrement: " . $conn->error;
+    return "Erreur lors de la réservation : " . $conn->error;
   }
 }
 
-function read_reservation($conn)
+function read_all_reservation($conn)
 {
-  $sql = "SELECT * FROM utilisateurs";
+  $sql = "SELECT * FROM reservations";
   $result = $conn->query($sql);
-
   if ($result->num_rows > 0) {
     // parcourir les résultats de la requête
     while ($row = $result->fetch_assoc()) {
-      echo "Nom: " . $row["nom"] . " - Email: " . $row["email"] . " - Téléphone: " . $row["telephone"] . "<br>";
+      // Récupération marque et modèle de la voiture
+      $id_voiture = $row['id_voiture'];
+      $sql_v = "SELECT marque,modele FROM voitures WHERE id_voiture='$id_voiture'";
+      $result_v = $conn->query($sql_v);
+      $row_v = $result_v->fetch_assoc();
+      // Récupération nom utilisateur
+      $id_utilisateur = $row['id_utilisateur'];
+      $sql_u = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id_utilisateur'";
+      $result_u = $conn->query($sql_u);
+      $row_u = $result_u->fetch_assoc();
+      echo "<tr><td>" . $row["id_reservation"] . "</td><td>" . $row_u['nom'] . "</td><td>" . $row_v['marque']. " " . $row_v['modele'] . "</td><td>". $row["date_reservation"] . "</td></tr>";
     }
   } else {
-    echo "Aucun enregistrement trouvé";
+    echo "Aucune réservation trouvée";
   }
 }
 
-//UPDATE : pour mettre à jour des enregistrements dans la base de données
-// fonction pour mettre à jour un enregistrement
-function update_reservation($id, $nom, $email, $telephone, $conn)
+function read_all_reservation_user($id_utilisateur, $conn)
 {
-  $sql = "UPDATE utilisateurs SET nom='$nom', email='$email', telephone='$telephone' WHERE id=$id";
-
-  if ($conn->query($sql) === TRUE) {
-    return "Enregistrement mis à jour avec succès";
+  $sql = "SELECT * FROM reservations WHERE id_utilisateur='$id_utilisateur'";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    // parcourir les résultats de la requête
+    while ($row = $result->fetch_assoc()) {
+      // Récupération marque et modèle de la voiture
+      $id_voiture = $row['id_voiture'];
+      $sql_v = "SELECT marque,modele FROM voitures WHERE id_voiture='$id_voiture'";
+      $result_v = $conn->query($sql_v);
+      $row_v = $result_v->fetch_assoc();
+      echo "Réservation N°". $row["id_reservation"] ." : <ul><li>Véhicule : ". $row_v['marque']. " " . $row_v['modele'] . "</li><li>Date : ". $row["date_reservation"] . "</li></ul>";
+    }
   } else {
-    return "Erreur lors de la mise à jour de l'enregistrement: " . $conn->error;
+    echo "Aucune réservation trouvée";
   }
 }
 
-function delete_reservation($id, $conn)
+function update_reservation($id_reservation, $id_voiture, $id_utilisateur, $date_reservation, $conn)
 {
-  $sql = "DELETE FROM utilisateurs WHERE id=$id";
+  $sql = "UPDATE utilisateurs SET id_voiture='$id_voiture', id_utilisateur='$id_utilisateur', date_reservation='$date_reservation' WHERE id_reservation=$id_reservation";
 
   if ($conn->query($sql) === TRUE) {
-    return "Enregistrement supprimé avec succès";
+    return "Réservation modifiée avec succès";
   } else {
-    return "Erreur lors de la suppression de l'enregistrement: " . $conn->error;
+    return "Erreur lors de la modification de la réservation " . $conn->error;
+  }
+}
+
+function delete_reservation($id_reservation, $conn)
+{
+  $sql = "DELETE FROM reservations WHERE id_reservation='$id_reservation'";
+  if ($conn->query($sql) === TRUE) {
+    return "Réservation supprimée avec succès";
+  } else {
+    return "Erreur lors de la suppression de la réservation : " . $conn->error;
   }
 }

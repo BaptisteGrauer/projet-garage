@@ -31,18 +31,14 @@ else {
             </div>
             <h3>Voitures</h3>
             <div class="section-admin">
-                <a href="voitures/read-voiture.php"><h4>Afficher les informations d'une voiture</h4></a>
-                <a href="voitures/read-all-voitures.php"><h4>Afficher les informations de toutes les voitures</h4></a>
                 <a href="voitures/add-voiture.php"><h4>Ajouter une voiture</h4></a>
                 <a href="voitures/update-voiture.php"><h4>Modifier les informations d'une voiture</h4></a>
                 <a href="voitures/delete-voiture.php"><h4>Supprimer une voiture</h4></a>
             </div>
             <h3>Réservations</h3>
             <div class="section-admin">
-                <a><h4>Lire</h4></a>
-                <a><h4>Ajouter</h4></a>
-                <a><h4>Modifier</h4></a>
-                <a><h4>Supprimer</h4></a>
+                <a href="reservations/read-reservation.php"><h4>Afficher les réservations</h4></a>
+                <a href="reservations/delete-reservation.php"><h4>Supprimer une réservation</h4></a>
             </div>
         </section>
         <?php include '../../../include/footer.php'?>
