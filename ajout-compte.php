@@ -31,7 +31,7 @@
                     }
                     else {
                         $mdp_hash = hash('sha256',$mdp);
-                        create_user($email, $nom, $mdp_hash, $conn);
+                        create_user($email, $nom, $mdp_hash, $bdd);
                         header('Location: connexion.php');
                     }
                 }

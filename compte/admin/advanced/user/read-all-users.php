@@ -28,12 +28,10 @@ else {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php
-                        include "../../../../code/crud_users.php";
-                            read_all_user_text($conn);
-                        ?>
-                    </tr>
+                    <?php
+                    include "../../../../code/crud_users.php";
+                        read_all_user_text($bdd);
+                    ?>
                 </tbody>
             </table>
             <?php include "all-user.php"?>

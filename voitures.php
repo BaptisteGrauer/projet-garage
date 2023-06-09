@@ -10,7 +10,7 @@
             <div class="liste-voiture">
                 <?php
                     include "code/crud_voitures.php";
-                    read_all_voiture($conn);
+                    read_all_voiture($bdd);
                 ?>
             </div>
         </section>

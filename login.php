@@ -9,20 +9,20 @@ function login(){
         }
         else{
             $mdp_hash = hash('sha256',$mdp);
-            if (connexion($nom,$mdp_hash,$conn) == true) {
+            if (connexion($nom,$mdp_hash,$bdd) == true) {
                 // récupération de l'ID
                 $sql = "SELECT id_utilisateur FROM utilisateurs WHERE nom='$nom'";
-                $result = $conn->query($sql);
+                $result = $bdd->query($sql);
                 $row = $result->fetch_assoc();
                 $id = $row["id_utilisateur"];
                 // récupération de l'adresse e-mail
                 $sql = "SELECT email FROM utilisateurs WHERE nom='$nom'";
-                $result = $conn->query($sql);
+                $result = $bdd->query($sql);
                 $row = $result->fetch_assoc();
                 $email = $row["email"];
                 // récupération des droit de l'utilisateur
                 $sql = "SELECT admin FROM utilisateurs WHERE nom='$nom'";
-                $result = $conn->query($sql);
+                $result = $bdd->query($sql);
                 $row = $result->fetch_assoc();
                 $admin = $row["admin"];
                 setcookie('id',$id,time() + 365*24*3600);

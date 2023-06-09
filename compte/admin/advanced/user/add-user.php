@@ -35,7 +35,7 @@ else {
                                 echo "Un des champs est vide, veuillez entrer des valeurs valides";
                             }
                             else {
-                                echo create_user($cemail, $cnom, $cmdp_hash, $conn);
+                                echo create_user($cemail, $cnom, $cmdp_hash, $bdd);
                             }
                         }
                     ?>

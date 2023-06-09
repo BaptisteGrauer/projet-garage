@@ -28,7 +28,7 @@ else {
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $dnom = $_POST["dnom"];
                         $sql = "SELECT nom FROM utilisateurs WHERE nom='$dnom'";
-                        $result = $conn->query($sql);
+                        $result = $bdd->query($sql);
                         $row = $result->fetch_assoc();
                         if ($result->num_rows > 0) {
                             $dnom = $row["nom"];
@@ -36,7 +36,7 @@ else {
                                 echo "Vous ne pouvez pas supprimer le compte administrateur";
                             }
                             else {
-                                echo delete_user($dnom,$conn);
+                                echo delete_user($dnom,$bdd);
                             }
                         }
                         else {

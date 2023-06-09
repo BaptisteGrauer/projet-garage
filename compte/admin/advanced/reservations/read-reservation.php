@@ -30,7 +30,7 @@ else {
                     <tr>
                         <?php
                             include "../../../../code/crud_reservations.php";
-                            read_all_reservation($conn);
+                            read_all_reservation($bdd);
                         ?>
                     </tr>
                 </tbody>

@@ -1,40 +1,65 @@
-body{
+body {
     z-index: 0;
     background-color: #fff;
     padding: 0px;
 }
-body *{
+
+body * {
     /*border: 1px solid blue;/*Affiche toutes les boîtes, permet de bien régler les règles css*/
     font-family: 'Open Sans', sans-serif;
 }
+
 h1 {
     font-size: 30px;
     font-weight: bolder;
 }
-ul *{
+
+ul * {
     padding: 0;
     margin: 0;
-    list-style-type: none;/**/
+    list-style-type: none;
+    /**/
 }
-a{
+
+a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
     color: #f00;
     transition: 0.3s;
 }
+
 a:hover {
     color: #f80;
 }
-table{
+
+table {
     border: 3px solid #000;
 }
+
 table * {
     margin: 0px;
-    padding: 10px;
+    padding: 2px;
     text-align: center;
 }
-thead *{
+
+thead * {
     border: 2px solid #000;
 }
-tbody *{
+
+tbody * {
     border: 1px solid #000;
+}
+
+td,
+th {
+    width: 100px;
+    height: 100px;
+}
+
+tbody>tr>td>img {
+    padding: 0%;
+    border: unset;
+    max-width: 100px;
+    max-height: 100px;
 }

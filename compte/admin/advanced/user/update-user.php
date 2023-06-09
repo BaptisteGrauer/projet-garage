@@ -40,13 +40,13 @@ else {
                 else {
                     if ($email == "") {
                         $sql = "SELECT email FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $conn->query($sql);
+                        $result = $bdd->query($sql);
                         $row = $result->fetch_assoc();
                         $email = $row["email"];
                     }
                     if ($nom == "") {
                         $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $conn->query($sql);
+                        $result = $bdd->query($sql);
                         $row = $result->fetch_assoc();
                         $nom = $row["nom"];
                     }
@@ -56,11 +56,11 @@ else {
                     }
                     if ($mdp == "") {
                         $sql = "SELECT mdp FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $conn->query($sql);
+                        $result = $bdd->query($sql);
                         $row = $result->fetch_assoc();
                         $mdp = $row["mdp"];
                     }
-                    echo update_user($id,$nom,$email,$mdp,$pdp,$conn);
+                    echo update_user($id,$nom,$email,$mdp,$bdd);
                 }
             }
             ?>

@@ -34,6 +34,7 @@ else {
             <img src="../../../include/icons/car.png">
             <div class="section-admin">
                 <a href="voitures/add-voiture.php"><img src="../../../include/icons/add.png"><h4>Ajouter une voiture</h4></a>
+                <a href="voitures/read-voiture.php"><img src="../../../include/icons/visibility.png"><h4>Afficher toutes les voitures</h4></a>
                 <a href="voitures/update-voiture.php"><img src="../../../include/icons/update.png"><h4>Modifier les informations d'une voiture</h4></a>
                 <a href="voitures/delete-voiture.php"><img src="../../../include/icons/delete.png"><h4>Supprimer une voiture</h4></a>
             </div>

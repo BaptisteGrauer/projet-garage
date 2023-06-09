@@ -28,11 +28,11 @@ else {
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $id = $_POST["did"];
                     $sql = "SELECT id_voiture FROM voitures WHERE id_voiture='$id'";
-                    $result = $conn->query($sql);
+                    $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     if ($result->num_rows > 0) {
                         $id = $row["id_voiture"];
-                        echo delete_voiture($id,$conn);
+                        echo delete_voiture($id,$bdd);
                     }
                     else {
                         echo "La voiture $id n'existe pas";

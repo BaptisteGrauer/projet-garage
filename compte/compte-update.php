@@ -1,3 +1,8 @@
+<?php 
+if (!isset($_COOKIE['nom'])) {
+    header('Location: /index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,17 +34,17 @@
                     move_uploaded_file($file_tmp, "../../images/pdp/" . $file_name);
                     $image_path = "../../images/pdp/" . $file_name;
                     $sql = "INSERT INTO utilisateurs VALUES chemin";
-                    $stmt = $conn->query($sql);
+                    $stmt = $bdd->query($sql);
                 }
                 if ($email == "") {
                     $sql = "SELECT email FROM utilisateurs WHERE id_utilisateur='$id'";
-                    $result = $conn->query($sql);
+                    $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     $email = $row["email"];
                 }
                 if ($nom == "") {
                     $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
-                    $result = $conn->query($sql);
+                    $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     $nom = $row["nom"];
                 }
@@ -49,11 +54,11 @@
                 }
                 if ($mdp == "") {
                     $sql = "SELECT mdp FROM utilisateurs WHERE id_utilisateur='$id'";
-                    $result = $conn->query($sql);
+                    $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     $mdp = $row["mdp"];
                 }
-                echo update_user($id,$nom,$email,$mdp,$conn);
+                echo update_user($id,$nom,$email,$mdp,$bdd);
             }
             ?>
         </section>

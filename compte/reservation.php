@@ -1,3 +1,8 @@
+<?php 
+if (!isset($_COOKIE['nom'])) {
+    header('Location: /index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,13 +18,13 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $id_voiture = $_POST['id_voiture'];
                     $sql = "SELECT etat_reservation FROM voitures WHERE id_voiture='$id_voiture'";
-                    $result = $conn->query($sql);
+                    $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     if ($row['etat_reservation'] == 0) {
                         $id_utilisateur = $_COOKIE['id'];
                         $date_reservation = date("Y-m-d");
-                        create_reservation($id_voiture, $id_utilisateur, $date_reservation, $conn);
-                        update_voiture_reservation($id_voiture, 1, $conn);
+                        create_reservation($id_voiture, $id_utilisateur, $date_reservation, $bdd);
+                        update_voiture_reservation($id_voiture, 1, $bdd);
                         echo "Réservation effectuée avec succès";
                     }
                     else {
@@ -30,7 +35,7 @@
             <h2>Vos réservations</h2>
             <div>
                 <?php 
-                    read_all_reservation_user($_COOKIE['id'],$conn);
+                    read_all_reservation_user($_COOKIE['id'],$bdd);
                 ?>
             </div>
             <a href="compte.php">Retour gestion du compte</a>

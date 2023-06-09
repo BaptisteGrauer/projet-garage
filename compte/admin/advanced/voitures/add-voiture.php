@@ -161,7 +161,7 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                                 move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $dir . $_FILES['imageToUpload']['name']);
                                 $photo = "/images/voitures/". $_FILES['imageToUpload']['name'];
                             }
-                            echo create_voiture($immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $type_carburant, $description, $photo , $conn);
+                            echo create_voiture($immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $type_carburant, $description, $photo , $bdd);
                         }
                     ?>
                 </p>

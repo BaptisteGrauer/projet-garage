@@ -42,7 +42,7 @@ else {
                                 echo "Le champ est vide, veuillez entrer un nom";
                             }
                             else {
-                                read_user_text($rnom,$conn);
+                                read_user_text($rnom,$bdd);
                             }
                         }
                     ?>

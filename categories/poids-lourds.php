@@ -11,7 +11,7 @@
             <div class="liste-voiture">
                 <?php 
                 include "../code/crud_voitures.php";
-                read_all_voiture_text_categorie('poids-lourd',$conn)
+                read_all_voiture_text_categorie('poids-lourd',$bdd)
                 ?>
             </div>
         </section>

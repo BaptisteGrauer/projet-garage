@@ -117,7 +117,6 @@
 .voiture{
     overflow: hidden;
     border: 2px solid #f00;
-    background-color: #000;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -158,8 +157,8 @@
 }
 
 .voiture > img {
-    max-height: 200px;
     max-width: 300px;
+    width: fit-content;
 }
 
 .voiture:hover > img {
@@ -202,4 +201,9 @@
 }
 .details-voiture > ul {
     background-color: #ccc;
+}
+
+.section-compte {
+    display: flex;
+    align-items: center;
 }

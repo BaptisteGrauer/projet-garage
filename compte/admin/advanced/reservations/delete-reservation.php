@@ -30,13 +30,13 @@ else {
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $id_reservation = $_POST["did"];
                         $sql = "SELECT * FROM reservations WHERE id_reservation='$id_reservation'";
-                        $result = $conn->query($sql);
+                        $result = $bdd->query($sql);
                         $row = $result->fetch_assoc();
                         if ($result->num_rows > 0) {
                             $id_reservation = $row["id_reservation"];
                             $id_voiture = $row['id_voiture'];
-                            update_voiture_reservation($id_voiture,0,$conn);
-                            echo delete_reservation($id_reservation,$conn);
+                            update_voiture_reservation($id_voiture,0,$bdd);
+                            echo delete_reservation($id_reservation,$bdd);
                         }
                         else {
                             echo "La réservation N°$id_reservation n'existe pas";
