@@ -45,10 +45,8 @@ function read_all_reservation_user($id_utilisateur, $bdd)
     while ($row = $result->fetch_assoc()) {
       // Récupération marque et modèle de la voiture
       $id_voiture = $row['id_voiture'];
-      $sql_v = "SELECT marque,modele FROM voitures WHERE id_voiture='$id_voiture'";
-      $result_v = $bdd->query($sql_v);
-      $row_v = $result_v->fetch_assoc();
-      echo "Réservation N°" . $row["id_reservation"] . " : <ul><li>Véhicule : " . $row_v['marque'] . " " . $row_v['modele'] . "</li><li>Date : " . $row["date_reservation"] . "</li></ul>";
+      //echo "Réservation N°" . $row["id_reservation"] . " :";
+      read_voiture_id($id_voiture, $bdd);
     }
   } else {
     echo "Aucune réservation trouvée";

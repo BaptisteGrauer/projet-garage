@@ -1,7 +1,7 @@
 <?php
 include "configuration.php";
 
-function connexion($nom, $mdp, $bdd)
+function connexion($nom, $mdp, $bdd) // Vérifie l'égalité entre le mot de passe envoyé et le mot de passe dans la base de donnée (-> page connexion)
 {
   $sql = "SELECT mdp FROM utilisateurs WHERE nom='$nom'";
   $result = $bdd->query($sql);
@@ -16,10 +16,9 @@ function connexion($nom, $mdp, $bdd)
   }
 }
 
-function create_user($email, $nom, $mdp, $bdd)
+function create_user($email, $nom, $mdp, $bdd) // Ajoute un utilisateur dans la BDD (-> panneau admin / création de compte)
 {
   $sql = "INSERT INTO utilisateurs (email, nom, mdp) VALUES ('$email', '$nom', '$mdp')";
-
   if ($bdd->query($sql) === TRUE) {
     return "L'utilisateur $nom a été créé avec succès";
   } else {
@@ -27,7 +26,7 @@ function create_user($email, $nom, $mdp, $bdd)
   }
 }
 
-function read_user_text($nom, $bdd)
+function read_user_text($nom, $bdd) // Affiche les information d'un utilisateur (-> panneau admin / paramètres du compte)
 {
   $sql = "SELECT * FROM utilisateurs WHERE nom='$nom'";
   $result = $bdd->query($sql);
@@ -39,7 +38,7 @@ function read_user_text($nom, $bdd)
   }
 }
 
-function read_all_user_text($bdd)
+function read_all_user_text($bdd) // Affiche tout les utilisateurs ansi que toutes leurs informations (-> panneau admin)
 {
   $sql = "SELECT * FROM utilisateurs";
   $result = $bdd->query($sql);
@@ -52,7 +51,7 @@ function read_all_user_text($bdd)
   }
 }
 
-function update_user($id, $nom, $email, $mdp, $bdd)
+function update_user($id, $nom, $email, $mdp, $bdd) // Met à jour les informations d'un utilisateur (-> panneau admin / paramètres utilisateur)
 {
   $sql = "UPDATE utilisateurs SET nom='$nom', email='$email', mdp='$mdp' WHERE id_utilisateur=$id";
   if ($bdd->query($sql) === TRUE) {
@@ -62,7 +61,7 @@ function update_user($id, $nom, $email, $mdp, $bdd)
   }
 }
 
-function delete_user($nom, $bdd)
+function delete_user($nom, $bdd) // Supprime un utilisateur de la base de donnée (-> panneau admin / paramètres utilisateurs)
 {
   $sql = "DELETE FROM utilisateurs WHERE nom='$nom'";
     if ($bdd->query($sql) === TRUE) {

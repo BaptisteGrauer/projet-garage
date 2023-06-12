@@ -8,7 +8,7 @@ header {
     background-color: #ccc;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;/**/
 }
 
 header * {
@@ -19,7 +19,6 @@ header * {
 }
 
 .recherche {
-    margin-right: 60px;
     display: flex;
     align-items: center;
 }
@@ -55,49 +54,54 @@ header * {
     max-height: 50px;
 }
 
-.menu-principal {
-    position: fixed;
-    padding: 15px;
-    right: 0;
-    top: 0;
-    transition: 0.3s;
-    height: 40px;
-    width: 40px;
-    overflow: hidden;
+/* Menu déroulant */
+
+#icone-menu-principal {
+    padding: 10px;
+    padding-left: 270px;
 }
 
-.menu-principal > p {
-    transition: 0s;
-    position:absolute;
-    opacity: 0%;
-    left: 0%;
-    top: 0;
-    margin: 20px;
+.logout {
+    padding-left: 10px;
 }
 
-.menu-principal:hover > p {
-    position:absolute;
-    opacity: 100%;
-    left: 0;
-    top: 0;
-}
-
-.menu-principal:hover {
+.menu-deroulant {
     background-color: #ccc;
+    position: absolute;
+    padding: 10px;
+    right: -300px;
+    top: 0;
+    width: 300px;
     height: fit-content;
-    width: fit-content;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: end;
+    opacity: 0%;
 }
 
-.menu-principal ul {
+.menu-deroulant * {
+    text-align: justify;
+}
+
+.menu-deroulant > ul > li > * > img {
+    padding-right: 10px;
+}
+
+#icone-menu-principal:hover + .menu-deroulant,  .menu-deroulant:hover{
+    right: 0px;
+    opacity: 100%;
+}
+
+.menu-deroulant ul {
     display: flex;
     flex-direction: column;
 }
 
-.menu-principal ul li {
+.menu-deroulant ul li {
     margin: 5px;
 }
 
-.menu-principal ul li a {
+.menu-deroulant ul li a {
     display: flex;
     align-items: center;
     justify-content: flex-start;

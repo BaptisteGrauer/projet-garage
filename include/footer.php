@@ -5,5 +5,6 @@
         <li><a href="/autres/privacy.php">Charte de confidentialité</a></li>
         <li><a href="/autres/about.php">À propos</a></li>
         <li><a href="/autres/contact.php">Nous contacter</a></li>
+        <li>© Baptiste GRAUER 2023</li>
     </ul>
 </footer>

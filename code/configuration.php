@@ -1,19 +1,32 @@
 <?php
-// Variables à modifier en fonction du besoin
+// Ceci est le fichier de configuration pour ce site.
+// les variables ci-dessous sont à modifier et doivent correspondre à votre configuration actuelle.
 
-// informations d'identification de la base de données
+// Informations d'identification de la base de données :
 
-$serveur = "127.0.0.1"; // Adresse du serveur MySQL
-$user = "root"; // Nom d'utilisateur du serveur MySQL
-$mdp = ""; // Mot de passe utilisateur du serveur MySQL
-$db = "garage"; // Le nom de la base de donnée à utiliser
-$bdd = new mysqli($serveur, $user, $mdp, $db); // ouverture de la session sur la bdd
+    // Adresse du serveur MySQL :
+    $serveur = "127.0.0.1"; 
 
-// vérification de la connexion à la bdd
-if ($bdd->connect_error) {
-    die("La connexion à échouée : " . $bdd->connect_error);
-}
+    // Nom d'utilisateur du serveur MySQL :
+    $user = "root"; 
 
-// Chemin absolu du dossier images (pour ajout images voitures), à modifier avec celui de votre poste/serveur.
-$dir = "C:/laragon/www/projet-garage/images/voitures/";
+    // Mot de passe utilisateur du serveur MySQL :
+    $mdp = ""; 
+
+    // Le nom de la base de donnée à utiliser :
+    $db = "garage"; 
+
+    // Ouverture de la session sur la base de données :
+    $bdd = new mysqli($serveur, $user, $mdp, $db); 
+
+    // Vérification de la connexion à la base de donnée :
+    if ($bdd->connect_error) {
+        die("La connexion à la base de donnée à échouée : <br />" . $bdd->connect_error);
+    }
+
+// Variables diverses : 
+
+    // Chemin absolu du dossier images (pour ajout images voitures), à modifier avec celui de votre ordinateur/serveur.
+    $dir = "C:/laragon/www/projet-garage/images/voitures/";
+
 ?>

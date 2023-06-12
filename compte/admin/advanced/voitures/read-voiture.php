@@ -25,13 +25,13 @@ else {
                         <th>Marque</th>
                         <th>Modèle</th>
                         <th>Catégorie</th>
-                        <th>Date de mise en circulation</th>
+                        <th>Date mise en route</th>
                         <th>prix</th>
                         <th>Date d'entrée au garage</th>
                         <th>Puissance</th>
-                        <th>Type de carburant</th>
+                        <th>Carburant</th>
                         <th>Description</th>
-                        <th>Etat réservation</th>
+                        <th>Réservation</th>
                         <th>Photo</th>
                     </tr>
                 </thead>

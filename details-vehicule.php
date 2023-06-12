@@ -6,12 +6,12 @@
     <body>
         <?php include 'include/header.php'?>
         <section class="contenu">
+        <a href="index.php"><img src='include/icons/arrow_back.png'>Retour</a>
             <?php 
                 $id_voiture = $_GET['id'];
                 include "code/crud_voitures.php";
-                read_voiture_id($id_voiture,$bdd);
+                read_voiture_id_complete($id_voiture,$bdd);
             ?>
-            <a href="index.php"><img src='include/icons/arrow_back.png'>Retour</a>
             <div>
                 <?php
                     if (isset($_COOKIE['id'])) {
