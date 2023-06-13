@@ -21,7 +21,6 @@ else {
                 <thead>
                     <tr>
                         <th>id_utilisateur</th>
-                        <th>email</th>
                         <th>nom</th>
                         <th>mdp</th>
                         <th>admin</th>

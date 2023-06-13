@@ -19,23 +19,21 @@ else {
             <h2>Ajouter</h2>
             <form method="POST" action="add-user.php" class="formulaire">
                 <p>Créer un nouvel utilisateur</p>
-                <input type="text" name="cemail" placeholder="E-mail utilisateur" required>
                 <input type="text" name="cnom" placeholder="Nom d'utilisateur" required>
                 <input type="password" name="cmdp" placeholder="MDP utilisateur" required>
                 <input type="submit" value="Créer l'utilisateur">
                 <p class="message-php" id="cuser">
                     <?php
                         include '../../../../code/crud_users.php';
-                        if ($_SERVER["REQUEST_METHOD"] == "POST" AND $_POST["cemail"] != "" AND $_POST["cnom"] != "" AND $_POST["cmdp"] != "") {
-                            $cemail = $_POST["cemail"];
+                        if ($_SERVER["REQUEST_METHOD"] == "POST" AND $_POST["cnom"] != "" AND $_POST["cmdp"] != "") {
                             $cnom = $_POST["cnom"];
                             $cmdp = $_POST["cmdp"];
                             $cmdp_hash = hash('sha256',$cmdp);
-                            if ($cemail == "" OR $cnom == "" OR $cmdp == ""){
+                            if ($cnom == "" OR $cmdp == ""){
                                 echo "Un des champs est vide, veuillez entrer des valeurs valides";
                             }
                             else {
-                                echo create_user($cemail, $cnom, $cmdp_hash, $bdd);
+                                echo create_user($cnom, $cmdp_hash, $bdd);
                             }
                         }
                     ?>

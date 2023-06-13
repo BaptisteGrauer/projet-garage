@@ -29,17 +29,15 @@
 
                 CREATE TABLE IF NOT EXISTS `utilisateurs` (
                     `id_utilisateur` int NOT NULL AUTO_INCREMENT,
-                    `email` varchar(255) NOT NULL,
                     `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                     `mdp` varchar(255) NOT NULL,
                     `admin` int DEFAULT '0',
                     PRIMARY KEY (`id_utilisateur`) USING BTREE,
-                    UNIQUE KEY `email` (`email`) USING BTREE,
                     UNIQUE KEY `nom_utilisateur` (`nom`) USING BTREE
                 ); <br />
 
-                INSERT INTO `utilisateurs` (`id_utilisateur`, `email`, `nom`, `mdp`, `admin`) VALUES
-                    (1, 'admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1); <br />
+                INSERT INTO `utilisateurs` (`id_utilisateur`, `nom`, `mdp`, `admin`) VALUES
+                    (1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1); <br />
 
                 CREATE TABLE IF NOT EXISTS `voitures` (
                     `id_voiture` int NOT NULL AUTO_INCREMENT,

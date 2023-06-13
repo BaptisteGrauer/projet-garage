@@ -9,7 +9,6 @@
         <section class="contenu">
             <h1>Créer un compte</h1>
             <form method="POST" action="ajout-compte.php" class="formulaire">
-                <input type="text" name="email" placeholder="Adresse e-mail" required>
                 <input type="text" name="nom" placeholder="Nom d'utilisateur" required>
                 <input type="password" name="mdp" placeholder="mot de passe" required>
                 <input type="password" name="confirmation-mdp" placeholder="Confirmer le mot de passe" required>
@@ -19,11 +18,10 @@
                 <?php
                 require "code/crud_users.php";
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $email = $_POST["email"];
                     $nom = $_POST["nom"];
                     $mdp = $_POST["mdp"];
                     $confirmation_mdp = $_POST["confirmation-mdp"];
-                    if ($email == "" OR $nom == "" OR $mdp == "" OR $confirmation_mdp ==""){
+                    if ($nom == "" OR $mdp == "" OR $confirmation_mdp ==""){
                         echo "Un des champs est vide, veuillez entrer des valeurs valides";
                     }   
                     elseif ($mdp != $confirmation_mdp){
@@ -31,7 +29,7 @@
                     }
                     else {
                         $mdp_hash = hash('sha256',$mdp);
-                        create_user($email, $nom, $mdp_hash, $bdd);
+                        create_user($nom, $mdp_hash, $bdd);
                         header('Location: connexion.php');
                     }
                 }

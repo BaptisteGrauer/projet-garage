@@ -20,7 +20,6 @@ else {
             <p>Laisser les cases vides pour garder les valeurs d'origine</p>
             <form method="POST" action="update-user.php" class="formulaire">
                 <input type="text" name="uid" placeholder="ID d'utilisateur existant" required>
-                <input type="text" name="uemail" placeholder="Nouvelle adresse e-mail">
                 <input type="text" name="unom" placeholder="Nouveau nom d'utilisateur">
                 <input type="password" name="umdp" placeholder="Nouveau mot de passe">
                 <input type="submit" value="Appliquer les modifications">
@@ -30,7 +29,6 @@ else {
             include "../../../../code/crud_users.php";
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $id = $_POST["uid"];
-                $email = $_POST["uemail"];
                 $nom = $_POST["unom"];
                 $mdp = hash('sha256',$_POST["umdp"]);
                 $pdp = "";
@@ -38,12 +36,6 @@ else {
                     echo "Veuillez entrer un ID d'utilisateur";
                 }
                 else {
-                    if ($email == "") {
-                        $sql = "SELECT email FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $bdd->query($sql);
-                        $row = $result->fetch_assoc();
-                        $email = $row["email"];
-                    }
                     if ($nom == "") {
                         $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
                         $result = $bdd->query($sql);
@@ -60,7 +52,7 @@ else {
                         $row = $result->fetch_assoc();
                         $mdp = $row["mdp"];
                     }
-                    echo update_user($id,$nom,$email,$mdp,$bdd);
+                    echo update_user($id,$nom,$mdp,$bdd);
                 }
             }
             ?>

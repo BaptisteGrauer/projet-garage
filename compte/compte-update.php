@@ -15,7 +15,6 @@ if (!isset($_COOKIE['nom'])) {
             <h3>Modifier les informations du compte</h3>
             <p>Laisser les cases vides pour garder les valeurs d'origine</p>
             <form method="POST" action="compte-update.php" class="formulaire">
-                <input type="text" name="uemail" placeholder="Nouvelle adresse e-mail">
                 <input type="text" name="unom" placeholder="Nouveau nom d'utilisateur">
                 <input type="password" name="umdp" placeholder="Nouveau mot de passe">
                 <input type="submit" value="Appliquer les modifications">
@@ -25,7 +24,6 @@ if (!isset($_COOKIE['nom'])) {
             include "../code/crud_users.php";
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $id = $_COOKIE['id'];
-                $email = $_POST["uemail"];
                 $nom = $_POST["unom"];
                 $mdp = hash('sha256',$_POST["umdp"]);
                 if(isset($_FILES['image'])){
@@ -35,12 +33,6 @@ if (!isset($_COOKIE['nom'])) {
                     $image_path = "../../images/pdp/" . $file_name;
                     $sql = "INSERT INTO utilisateurs VALUES chemin";
                     $stmt = $bdd->query($sql);
-                }
-                if ($email == "") {
-                    $sql = "SELECT email FROM utilisateurs WHERE id_utilisateur='$id'";
-                    $result = $bdd->query($sql);
-                    $row = $result->fetch_assoc();
-                    $email = $row["email"];
                 }
                 if ($nom == "") {
                     $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
@@ -58,7 +50,7 @@ if (!isset($_COOKIE['nom'])) {
                     $row = $result->fetch_assoc();
                     $mdp = $row["mdp"];
                 }
-                echo update_user($id,$nom,$email,$mdp,$bdd);
+                echo update_user($id,$nom,$mdp,$bdd);
             }
             ?>
         </section>
