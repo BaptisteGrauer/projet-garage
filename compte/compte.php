@@ -24,7 +24,7 @@ if (!isset($_COOKIE['nom'])) {
                 echo
                 "<div class='section-compte'>
                     <img src='../include/icons/settings.png'>
-                    <a href='admin/admin.php'>Accéder au panneau d'administration</a>
+                    <a href='/admin/admin.php'>Accéder au panneau d'administration</a>
                 </div>";
             }
             ?>

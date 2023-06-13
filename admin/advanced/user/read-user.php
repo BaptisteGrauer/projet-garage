@@ -1,22 +1,23 @@
 <?php 
 if (isset($_COOKIE['admin'])){
     if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../compte.php');
+        header('Location: ../../compte/compte.php');
     }
 }
 else {
-    header('Location: ../../../../index.php');
+    header('Location: ../../../index.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../../../../include/head.php'?>
+        <?php include '../../../include/head.php'?>
     </head>
     <body>
-        <?php include '../../../../include/header.php'?>
+        <?php include '../../../include/header.php'?>
         <section class="contenu">
             <h2>Afficher les information d'un utilisateur</h2>
+            <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
             <form method="POST" action="read-user.php" class="formulaire">
                 <p>Entrer un nom d'utilisateur valide :</p>
                 <input type="text" name="rnom" placeholder="Nom d'utilisateur" required>
@@ -34,7 +35,7 @@ else {
                 <tbody>
                     <tr>
                     <?php
-                        include "../../../../code/crud_users.php";
+                        include "../../../code/crud_users.php";
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $rnom = $_POST["rnom"];
                             if ($rnom == "") {
@@ -50,6 +51,6 @@ else {
             </table>
             <?php include "all-user.php"?>
         </section>
-        <?php include '../../../../include/footer.php'?>
+        <?php include '../../../include/footer.php'?>
     </body>
 </html>

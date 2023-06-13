@@ -1,32 +1,31 @@
 <?php 
 if (isset($_COOKIE['admin'])){
     if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../../compte.php');
+        header('Location: ../../compte/compte.php');
     }
 }
 else {
-    header('Location: ../../../../index.php');
+    header('Location: ../../../index.php');
 }
-define ('SITE_ROOT', realpath(dirname(__DIR__)));
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../../../../include/head.php'?>
+        <?php include '../../../include/head.php'?>
     </head>
     <body>
-        <?php include '../../../../include/header.php'?>
+        <?php include '../../../include/header.php'?>
         <section class="contenu">
-            <h1>Ajouter</h1>
-            <form method="POST" action="add-voiture.php" class="formulaire" enctype="multipart/form-data">
-                <h2>Ajouter une nouvelle voiture</h2>
+            <h2>Modifier les informations d'une voiture</h2>
+            <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
+            <form method="POST" action="update-voiture.php" class="formulaire" enctype="multipart/form-data">
                 <div>
                     <p>Immatriculation :</p>
-                    <input type="text" name="cimmatriculation" placeholder="Immatriculation" required>
+                    <input type="text" name="uimmatriculation" placeholder="Immatriculation" required>
                 </div>
                 <div>
                     <p>Marque :</p>
-                    <select name="cmarque">
+                    <select name="umarque">
                         <option value="">Sélectionner une marque</option>
                         <option value="Acura">Acura</option>
                         <option value="Alfa Romeo">Alfa Romeo</option>
@@ -96,11 +95,11 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                 </div>
                 <div>
                     <p>Modèle :</p>
-                    <input type="text" name="cmodele" placeholder="Modèle" required>
+                    <input type="text" name="umodele" placeholder="Modèle" required>
                 </div>
                 <div>
                     <p>Catégorie :</p>
-                    <select name="ccategorie">
+                    <select name="ucategorie">
                         <option value="">Sélectionner une catégorie</option>
                         <option value="Citadine">Citadine</option>
                         <option value="SUV">SUV</option>
@@ -111,23 +110,23 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                 </div>
                 <div>
                     <p>Date de mise en circulation :</p>
-                    <input type="date" name="cdate-mise-circulation" required>
+                    <input type="date" name="udate-mise-circulation" required>
                 </div>
                 <div>
                     <p>Prix :</p>
-                    <input type="number" name="cprix" placeholder="Prix" required>
+                    <input type="number" name="uprix" placeholder="Prix" required>
                 </div>
                 <div>
                     <p>Date d'entrée au garage :</p>
-                    <input type="date" name="cdate-entree-garage" required>
+                    <input type="date" name="udate-entree-garage" required>
                 </div>
                 <div>
                     <p>Puissance :</p>
-                    <input type="text" name="cpuissance" placeholder="Puissance" required>
+                    <input type="text" name="upuissance" placeholder="Puissance" required>
                 </div>
                 <div>
                     <p>Type de carburant :</p>
-                    <select name="ctype-carburant" required>
+                    <select name="utype-carburant" required>
                         <option value="">Sélectionner un type de carburant</option>
                         <option value="Essence">Essence</option>
                         <option value="Diesel">Diesel</option>
@@ -135,38 +134,37 @@ define ('SITE_ROOT', realpath(dirname(__DIR__)));
                 </div>
                 <div>
                     <p>Description (optionnel) :</p>
-                    <input type="text" name="cdescription" placeholder="Description">
+                    <input type="text" name="udescription" placeholder="Description">
                 </div>
                 <div>
-                    <p>Ajouter une photo :</p>
-                    <input type="file" name="imageToUpload" required>
+                    <p>Modifier la photo (optionnel) :</p>
+                    <input type="file" name="imageToUpload">
                 </div>
-                <input type="submit" value="Ajouter la voiture">
+                <input type="submit" value="Appliquer les modifications">
             </form>
             <p class="message-php" id="cuser">
                     <?php
-                        include '../../../../code/crud_voitures.php';
+                        include '../../../code/crud_voitures.php';
                         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                            $immatriculation = $_POST["cimmatriculation"];
-                            $marque = $_POST['cmarque'];
-                            $modele = $_POST['cmodele'];
-                            $categorie = $_POST['ccategorie'];
-                            $date_mise_circulation = $_POST['cdate-mise-circulation'];
-                            $prix = $_POST['cprix'];
-                            $date_entree_garage = $_POST['cdate-entree-garage'];
-                            $puissance = $_POST['cpuissance'];
-                            $type_carburant = $_POST['ctype-carburant'];
-                            $description = $_POST['cdescription'];
+                            $immatriculation = $_POST["uimmatriculation"];
+                            $marque = $_POST['umarque'];
+                            $modele = $_POST['umodele'];
+                            $categorie = $_POST['ucategorie'];
+                            $date_mise_circulation = $_POST['udate-mise-circulation'];
+                            $prix = $_POST['uprix'];
+                            $date_entree_garage = $_POST['udate-entree-garage'];
+                            $puissance = $_POST['upuissance'];
+                            $type_carburant = $_POST['utype-carburant'];
+                            $description = $_POST['udescription'];
                             if (isset($_FILES['imageToUpload'])) {
-                                move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $dir . $_FILES['imageToUpload']['name']);
+                                // Modifier le chemin du répertoire avec celui qui convient
+                                move_uploaded_file($_FILES['imageToUpload']['tmp_name'], "C:/laragon/www/projet-garage/images/voitures/" . $_FILES['imageToUpload']['name']);
                                 $photo = "/images/voitures/". $_FILES['imageToUpload']['name'];
                             }
-                            echo create_voiture($immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $type_carburant, $description, $photo , $bdd);
                         }
                     ?>
                 </p>
-            <?php include "all-voitures.php"?>
-        </section>
-        <?php include '../../../../include/footer.php'?>
+                </section>
+        <?php include '../../../include/footer.php'?>
     </body>
 </html>

@@ -1,24 +1,25 @@
 <?php 
 if (isset($_COOKIE['admin'])){
     if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../../compte.php');
+        header('Location: ../../compte/compte.php');
     }
 }
 else {
-    header('Location: ../../../../index.php');
+    header('Location: ../../../index.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../../../../include/head.php'?>
+        <?php include '../../../include/head.php'?>
     </head>
     <body>
-        <?php include '../../../../include/header.php'?>
+        <?php include '../../../include/header.php'?>
         <section class="contenu">
             <h2>Afficher les réservations</h2>
+            <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
             <?php 
-                include "../../../../code/crud_reservations.php";
+                include "../../../code/crud_reservations.php";
             ?>
             <form method="POST" action="delete-reservation.php"class="formulaire">
                 <input type="text" name="did" placeholder="N° de réservation à supprimer" required>
@@ -26,7 +27,7 @@ else {
             </form>
             <div class="message-php">
                 <?php 
-                    include '../../../../code/crud_voitures.php';
+                    include '../../../code/crud_voitures.php';
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $id_reservation = $_POST["did"];
                         $sql = "SELECT * FROM reservations WHERE id_reservation='$id_reservation'";
@@ -46,6 +47,6 @@ else {
             </div>
             <?php include 'all-reservation.php'?>
         </section>
-        <?php include '../../../../include/footer.php'?>
+        <?php include '../../../include/footer.php'?>
     </body>
 </html>

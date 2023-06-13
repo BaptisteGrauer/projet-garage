@@ -1,22 +1,23 @@
 <?php 
 if (isset($_COOKIE['admin'])){
     if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../../compte.php');
+        header('Location: ../../compte/compte.php');
     }
 }
 else {
-    header('Location: ../../../../index.php');
+    header('Location: ../../../index.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../../../../include/head.php'?>
+        <?php include '../../../include/head.php'?>
     </head>
     <body>
-        <?php include '../../../../include/header.php'?>
+        <?php include '../../../include/header.php'?>
         <section class="contenu">
             <h2>Afficher les réservations</h2>
+            <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
             <table>
                 <thead>
                     <tr>
@@ -29,7 +30,7 @@ else {
                 <tbody>
                     <tr>
                         <?php
-                            include "../../../../code/crud_reservations.php";
+                            include "../../../code/crud_reservations.php";
                             read_all_reservation($bdd);
                         ?>
                     </tr>
@@ -37,6 +38,6 @@ else {
             </table>
             <?php include 'all-reservation.php'?>
         </section>
-        <?php include '../../../../include/footer.php'?>
+        <?php include '../../../include/footer.php'?>
     </body>
 </html>

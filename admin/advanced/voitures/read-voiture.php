@@ -1,22 +1,23 @@
 <?php 
 if (isset($_COOKIE['admin'])){
     if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../../compte.php');
+        header('Location: ../../compte/compte.php');
     }
 }
 else {
-    header('Location: ../../../../index.php');
+    header('Location: ../../../index.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../../../../include/head.php'?>
+        <?php include '../../../include/head.php'?>
     </head>
     <body>
-        <?php include '../../../../include/header.php'?>
+        <?php include '../../../include/header.php'?>
         <section class="contenu">
             <h2>Afficher toutes les voitures</h2>
+            <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
             <table>
                 <thead>
                     <tr>
@@ -37,13 +38,13 @@ else {
                 </thead>
                 <tbody>
                     <?php 
-                    include "../../../../code/crud_voitures.php";
+                    include "../../../code/crud_voitures.php";
                     read_all_voiture_complete($bdd)
                     ?>
                 </tbody>
             </table>
             <?php include "all-voitures.php"?>
-        </section>
-        <?php include '../../../../include/footer.php'?>
+            </section>
+        <?php include '../../../include/footer.php'?>
     </body>
 </html>

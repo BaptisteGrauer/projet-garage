@@ -16,7 +16,7 @@
                         "<form method='POST' action='/logout.php' class='logout'><input type='submit' value='Se déconnecter'></form></li></a>";
                         echo "<li><a href='/compte/reservation.php'><img src='/include/icons/cart.png'>Mes réservations</a></li>";
                         if ($_COOKIE['admin'] == 1) {
-                            echo "<li><a href='/compte/admin/admin.php'><img src='/include/icons/settings.png'>Panneau d'administration</a></li>";
+                            echo "<li><a href='/admin/admin.php'><img src='/include/icons/settings.png'>Panneau d'administration</a></li>";
                         }
                     }
                     else {
