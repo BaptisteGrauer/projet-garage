@@ -1,13 +1,15 @@
-body {
+body { /* Règles générales s'appliquant sur tout le site */
     z-index: 0;
     background-color: #fff;
     padding: 0px;
 }
 
-body * {
-    /*border: 1px solid blue; /*Affiche toutes les boîtes. Très utile pour faire des ajustements précis sur les règles CSS*/
+body * { /* Régles générales s'appliquant sur tout les éléments du corps du site */
+    /*border: 1px solid blue; /* Affiche les contours de toutes les boîtes sur la page. Très utile pour faire des ajustements précis sur les règles CSS*/
     font-family: 'Open Sans', sans-serif;
 }
+
+/* Règle générales s'appliquant sur toutes les balises html sans classes/identifiants */
 
 h1 {
     font-size: 30px;

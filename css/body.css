@@ -1,4 +1,4 @@
-.contenu {
+.contenu {  /* Règles générales s'appliquant sur le corps de la page */
     position:absolute;
     top:0px;
     left:0;
@@ -13,13 +13,17 @@
     align-items: center;
 }
 
+.contenu * {
+    margin:10px;
+
+}
+
+/* Règles spécifiques */
+
 .logo {
     max-width: 500px;
 }
 
-.contenu * {
-    margin:10px;
-}
 .formulaire, .formulaire * {
     display: flex;
     align-items: center;
@@ -68,38 +72,40 @@
     left: -10%;
     right: -10%;
     font-size: 50px;
-    /*transform: skewX(20deg);/**/
 }
 .liste-categories:not(:hover) .categorie {
     opacity: 90%;
 }
+
+/* Images de fond pour le choix de catégorie */
 #categorie-citadines {
     background-image: url('../images/citadines.jpg');
     background-position: center;
     background-size:cover;
 }
+
 #categorie-suvs {
     background-image: url('../images/suvs.jpg');
     background-position: center;
     background-size:cover;
 }
+
 #categorie-utilitaires {
     background-image: url('../images/utilitaires.jpg');
     background-position: center;
     background-size:cover;
-
 }
+
 #categorie-motos {
     background-image: url('../images/motos.jpg');
     background-position: center;
     background-size:cover;
-
 }
+
 #categorie-poids-lourds {
     background-image: url('../images/camions.jpg');
     background-position: center;
     background-size:cover;
-
 }
 
 .liste-voiture {
@@ -110,10 +116,12 @@
     padding: 0;
     margin: 5px;
 }
+
 .liste-voiture * {
     margin: 5px;
     padding: 0;
 }
+
 .voiture{
     overflow: hidden;
     border: 2px solid #f00;
@@ -123,6 +131,7 @@
     height: 200px;
     width: 500px;
 }
+
 .voiture *{
     transition: 0.3s;
     margin: 0px;

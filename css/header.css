@@ -1,4 +1,4 @@
-header {
+header { /* Règles générales de l'en-tête du site */
     z-index: 2;
     position: fixed;
     top: 0;
@@ -8,10 +8,10 @@ header {
     background-color: #ccc;
     display: flex;
     align-items: center;
-    justify-content: space-between;/**/
+    justify-content: space-between;
 }
 
-header * {
+header * { /* Règles s'appliquant sur tous les éléments de l'en-tête */
     text-align: end;
     flex-direction: row;
     margin: 0;
@@ -56,7 +56,7 @@ header * {
 
 /* Menu déroulant */
 
-#icone-menu-principal {
+#icone-menu-principal { /* Agrandissement de la zone qui permet de faire apparaître le menu */
     padding: 10px;
     padding-left: 270px;
 }
@@ -65,7 +65,7 @@ header * {
     padding-left: 10px;
 }
 
-.menu-deroulant {
+.menu-deroulant { /* Le menu est positionné en dehors de l'affichage par sa propre largeur (300px) */
     background-color: #ccc;
     position: absolute;
     padding: 10px;
@@ -73,7 +73,7 @@ header * {
     top: 0;
     width: 300px;
     height: fit-content;
-    transition: 0.5s;
+    transition: 0.3s;
     overflow: hidden;
     text-align: end;
     opacity: 0%;
@@ -83,11 +83,11 @@ header * {
     text-align: justify;
 }
 
-.menu-deroulant > ul > li > * > img {
+.menu-deroulant > ul > li > * > img { /* Ajoute un espace entre les icônes du menu et le texte */
     padding-right: 10px;
 }
 
-#icone-menu-principal:hover + .menu-deroulant,  .menu-deroulant:hover{
+#icone-menu-principal:hover + .menu-deroulant,  .menu-deroulant:hover{ /* La règle qui fait se s'afficher le menu */
     right: 0px;
     opacity: 100%;
 }
@@ -101,7 +101,7 @@ header * {
     margin: 5px;
 }
 
-.menu-deroulant ul li a {
+.menu-deroulant ul li * {
     display: flex;
     align-items: center;
     justify-content: flex-start;
