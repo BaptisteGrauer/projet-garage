@@ -2,7 +2,6 @@
 <html>
     <head>
         <?php include '../include/head.php'?>
-        <title>Projet Garage</title>
     </head>
     <body>
         <?php include '../include/header.php'?>

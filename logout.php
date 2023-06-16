@@ -5,5 +5,5 @@ if(isset($_COOKIE)) {
     setcookie('admin',$admin,-1);
     header('Location: /index.php');
 }
+header('Location: /index.php');
 ?>
-<a href="compte/compte.php">compte</a>

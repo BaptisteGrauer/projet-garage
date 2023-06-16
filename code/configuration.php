@@ -27,6 +27,6 @@
 // Variables diverses : 
 
     // Chemin absolu du dossier images (pour ajout images voitures), à modifier avec celui de votre ordinateur/serveur.
-    $dir = "C:/laragon/www/garage-r/images/voitures/";
+    $dir = "C:/laragon/www/projet-garage/images/voitures/";
 
 ?>

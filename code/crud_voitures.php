@@ -176,19 +176,18 @@ function read_3_voiture_last($bdd) // Affiche les trois dernières voitures ajou
 function update_voiture($id_voiture, $immatriculation, $marque, $modele, $categorie, $date_mise_en_circulation, $prix, $date_entree_garage, $puissance, $description, $photo, $bdd) 
 // Met à jour les informations d'une voiture (-> panneau admin)
 {
-  $sql = "UPDATE voitures SET
-  immatriculation='$immatriculation',
-  marque='$marque',
-  modele='$modele',
+  $sql = "UPDATE voitures SET 
+  immatriculation='$immatriculation', 
+  marque='$marque', 
+  modele='$modele', 
   categorie='$categorie',
-  date_mise_en_circulation='$date_mise_en_circulation',
-  prix='$prix', 
-  date_entree_garage'$date_entree_garage',
-  puissance='$puissance',
+  date_mise_en_circulation='$date_mise_en_circulation', 
+  prix=$prix, 
+  date_entree_garage='$date_entree_garage', 
+  puissance=$puissance, 
   description='$description',
-  photo='$photo'
-  WHERE id_voiture=$id_voiture";
-
+  photo='$photo' 
+  WHERE id_voiture='$id_voiture'";
   if ($bdd->query($sql) === TRUE) {
     return "Information de la voiture mises à jour avec succès";
   } else {

@@ -180,6 +180,11 @@
     border: 2px solid #000
 }
 
+.formulaire img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
 .section-admin {
     display: flex;
     flex-wrap: wrap;

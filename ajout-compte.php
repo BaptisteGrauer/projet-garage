@@ -2,7 +2,6 @@
 <html>
     <head>
         <?php include 'include/head.php'?>
-        <title>Projet Garage</title>
     </head>
     <body>
         <?php include 'include/header.php'?>
@@ -21,10 +20,7 @@
                     $nom = $_POST["nom"];
                     $mdp = $_POST["mdp"];
                     $confirmation_mdp = $_POST["confirmation-mdp"];
-                    if ($nom == "" OR $mdp == "" OR $confirmation_mdp ==""){
-                        echo "Un des champs est vide, veuillez entrer des valeurs valides";
-                    }   
-                    elseif ($mdp != $confirmation_mdp){
+                    if ($mdp != $confirmation_mdp){
                         echo "Les mots de passe ne correspondent pas, veuillez vérifier qu'ils soient identiques.";
                     }
                     else {

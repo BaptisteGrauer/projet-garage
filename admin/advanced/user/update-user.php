@@ -18,44 +18,87 @@ else {
         <section class="contenu">
             <h2>Modifier les informations d'un utilisateur</h2>
             <a href="../advanced-admin.php"><img src="/include/icons/arrow_back.png">Retour</a>
-            <p>Laisser les cases vides pour garder les valeurs d'origine</p>
             <form method="POST" action="update-user.php" class="formulaire">
-                <input type="text" name="uid" placeholder="ID d'utilisateur existant" required>
-                <input type="text" name="unom" placeholder="Nouveau nom d'utilisateur">
-                <input type="password" name="umdp" placeholder="Nouveau mot de passe">
+                <p>ID de l'utilisateur à modifier</p>
+                <input type="text" name="id" placeholder="ID d'utilisateur">
+                <input type="submit" value="Envoyer">
+            </form>
+            <?php 
+            include "../../../code/crud_users.php";
+            if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST['id'])) {
+                $id = $_POST['id'];
+                $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
+                if ($bdd->query($sql)->num_rows > 0) {
+                    $row = $bdd->query($sql)->fetch_assoc();
+                    $nom = $row['nom'];
+                }
+                else {
+                    echo "L'utilisateur n'existe pas";
+                    $nom = "";
+                }
+            }
+            else {
+                $nom = "";
+            }
+            ?>
+            <form method="POST" action="update-user.php" class="formulaire">
+                <?php
+                if(isset($_POST['id'])) {
+                    $id = $_POST['id'];
+                    }
+                else {
+                    $id = "";
+                }
+                ?>
+                <!-- Ajouter les champs de mot de passe pour la modification des informations en dehors du panneau d'administration -->
+                <input type="hidden" name="id" value="<?php echo $id ?>" required>
+                <p>Modifier le nom d'utilisateur :</p>
+                <input type="text" name="nom" placeholder="Nouveau nom d'utilisateur" value="<?php echo $nom?>" required>
+                <!--<p>Ancien mot de passe :</p>
+                <input type="password" name="amdp" placeholder="Ancien mot de passe">-->
+                <p>Nouveau mot de passe :</p>
+                <input type="password" name="nmdp" placeholder="Nouveau mot de passe">
+                <!--<p>Confirmer le nouveau mot de passe : </p>
+                <input type="password" name="cmdp" placeholder="Confirmer mot de passe">-->
                 <input type="submit" value="Appliquer les modifications">
             </form>
             <p class="message-php">
             <?php 
-            include "../../../code/crud_users.php";
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $id = $_POST["uid"];
-                $nom = $_POST["unom"];
-                $mdp = hash('sha256',$_POST["umdp"]);
-                $pdp = "";
-                if ($id == ""){
-                    echo "Veuillez entrer un ID d'utilisateur";
+                if ($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST['nom']) /*AND isset($_POST['amdp'])*/ AND isset($_POST['nmdp']) /*AND isset($_POST['cmdp'])*/){
+                    $nom = $_POST["nom"];
+                    $id = $_POST['id'];
+                    $sql = "SELECT mdp FROM utilisateurs WHERE id_utilisateur='$id'";
+                    if($bdd->query($sql)->num_rows > 0) {
+                        $row = $bdd->query($sql)->fetch_assoc();
+                        /*$amdp = hash('sha256',$_POST["amdp"]);
+                        $mdp = $row['mdp'];
+                        if ($mdp != $amdp) {
+                            echo "Le mot de passe est incorrect";
+                        }*/
+                        if (false) {
+                        }
+                        else {
+                            if ($id == 1) {
+                                echo "Vous ne pouvez pas modifier le nom de l'administrateur";
+                                $nom = "admin";
+                            }
+                            $nmdp = hash('sha256',$_POST["nmdp"]);
+                            /*$cmdp = hash('sha256',$_POST["cmdp"]);*/
+                            /*if ($nmdp != $cmdp) {
+                                echo "Les mots de passe ne correspondent pas";
+                            }*/
+                            if (false){}
+                            else {
+                                /*if ($nmdp == "" AND $cmdp == "") { // Si pas de changement de mot de passe
+                                    echo update_user($id, $nom, $mdp, $bdd);
+                                }
+                                else {*/
+                                    echo update_user($id, $nom, $nmdp, $bdd);
+                                //}
+                            }
+                        }
+                    }
                 }
-                else {
-                    if ($nom == "") {
-                        $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $bdd->query($sql);
-                        $row = $result->fetch_assoc();
-                        $nom = $row["nom"];
-                    }
-                    if ($id == 1) {
-                        echo "Vous ne pouvez pas modifier le nom de l'administrateur";
-                        $nom = "admin";
-                    }
-                    if ($mdp == "") {
-                        $sql = "SELECT mdp FROM utilisateurs WHERE id_utilisateur='$id'";
-                        $result = $bdd->query($sql);
-                        $row = $result->fetch_assoc();
-                        $mdp = $row["mdp"];
-                    }
-                    echo update_user($id,$nom,$mdp,$bdd);
-                }
-            }
             ?>
             </p>
             <?php include "all-user.php"?>
