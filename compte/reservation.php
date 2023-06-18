@@ -12,6 +12,7 @@ if (!isset($_COOKIE['nom'])) {
         <?php include '../include/header.php'?>
         <section class="contenu">
             <h1>Vos réservations</h1>
+            <a href="compte.php"><img src='../include/icons/arrow_back.png'>Retour gestion du compte</a>
             <?php 
                 include "../code/crud_reservations.php";
                 include "../code/crud_voitures.php";
@@ -38,7 +39,6 @@ if (!isset($_COOKIE['nom'])) {
                 ?>
             </div>
             <input type="submit" value="Procéder au paiment (pas encore implémenté)">
-            <a href="compte.php">Retour gestion du compte</a>
         </section>
         <?php include '../include/footer.php'?>
     </body>

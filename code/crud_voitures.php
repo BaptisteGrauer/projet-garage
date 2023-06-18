@@ -32,7 +32,7 @@ function read_voiture_id_complete($id, $bdd) // Affiche les détails d'une voitu
         <li>Prix : " . $row['prix'] . "CFP</li>
         <li>Date d'entrée au garage : " . $row['date_entree_garage'] . "</li>
         <li>Puissance : " . $row['puissance'] . " chevaux</li>
-        <li>Type de carburant : " . $row['type_carburant'] . "</li>
+        <li>Motorisation : " . $row['type_carburant'] . "</li>
         <li>Description : " . $row['description'] . "</li>
       </ul>
     </div>";
@@ -51,7 +51,7 @@ function read_voiture_id($id, $bdd) // Affiche une voiture (-> page réservation
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
         "<li>Prix : " . $row['prix'] . " CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
-        "<li>Carburant : " . $row['type_carburant'] . "</li>" .
+        "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
         "<img src='" . $row['photo'] . "'></div>";
     }
@@ -72,7 +72,7 @@ function read_all_voiture($bdd) // Affiche toutes les voitures disponibles à la
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
         "<li>Prix : " . $row['prix'] . " CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
-        "<li>Carburant : " . $row['type_carburant'] . "</li>" .
+        "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
         "<img src='" . $row['photo'] . "'></div>";
     }
@@ -122,7 +122,7 @@ function read_6_voiture_random($bdd) // Affiche 6 voitures choisies aléatoireme
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
         "<li>Prix : " . $row['prix'] . "CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
-        "<li>Carburant : " . $row['type_carburant'] . "</li>" .
+        "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
         "<img src='" . $row['photo'] . "'></div>";
     }
@@ -143,7 +143,7 @@ function read_all_voiture_text_categorie($categorie, $bdd) // Affiche toutes les
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
         "<li>Prix : " . $row['prix'] . "CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
-        "<li>Carburant : " . $row['type_carburant'] . "</li>" .
+        "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
         "<img src='" . $row['photo'] . "'></div>";
     }
@@ -164,7 +164,7 @@ function read_3_voiture_last($bdd) // Affiche les trois dernières voitures ajou
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
         "<li>Prix : " . $row['prix'] . "CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
-        "<li>Carburant : " . $row['type_carburant'] . "</li>" .
+        "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
         "<img src='" . $row['photo'] . "'></div>";
     }
@@ -201,7 +201,7 @@ function update_voiture_reservation($id_voiture, $etat_reservation, $bdd) // Met
   WHERE id_voiture='$id_voiture'";
 
   if ($bdd->query($sql) === TRUE) {
-    return "Information de la voiture mises à jour avec succès";
+    return "Information de la voiture mises à jour avec succès ";
   } else {
     return "Erreur lors de la mise à jour de la voiture: " . $bdd->error;
   }

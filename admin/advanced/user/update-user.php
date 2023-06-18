@@ -70,11 +70,6 @@ else {
                     $sql = "SELECT mdp FROM utilisateurs WHERE id_utilisateur='$id'";
                     if($bdd->query($sql)->num_rows > 0) {
                         $row = $bdd->query($sql)->fetch_assoc();
-                        /*$amdp = hash('sha256',$_POST["amdp"]);
-                        $mdp = $row['mdp'];
-                        if ($mdp != $amdp) {
-                            echo "Le mot de passe est incorrect";
-                        }*/
                         if (false) {
                         }
                         else {
@@ -83,18 +78,9 @@ else {
                                 $nom = "admin";
                             }
                             $nmdp = hash('sha256',$_POST["nmdp"]);
-                            /*$cmdp = hash('sha256',$_POST["cmdp"]);*/
-                            /*if ($nmdp != $cmdp) {
-                                echo "Les mots de passe ne correspondent pas";
-                            }*/
                             if (false){}
                             else {
-                                /*if ($nmdp == "" AND $cmdp == "") { // Si pas de changement de mot de passe
-                                    echo update_user($id, $nom, $mdp, $bdd);
-                                }
-                                else {*/
-                                    echo update_user($id, $nom, $nmdp, $bdd);
-                                //}
+                                echo update_user($id, $nom, $nmdp, $bdd);
                             }
                         }
                     }

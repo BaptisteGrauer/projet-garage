@@ -21,7 +21,7 @@
 
     // Vérification de la connexion à la base de donnée :
     if ($bdd->connect_error) {
-        die("La connexion à la base de donnée à échouée : <br />" . $bdd->connect_error);
+        die("La connexion à la base de donnée à échouée : <br>" . $bdd->connect_error);
     }
 
 // Variables diverses : 

@@ -40,7 +40,7 @@ function create_user($nom, $mdp, $bdd) // Ajoute un utilisateur dans la BDD (-> 
   if ($bdd->query($sql) === TRUE) {
     return "L'utilisateur $nom a été créé avec succès";
   } else {
-    return "Erreur lors de la création de l'utilisateur: " . $bdd->error;
+    return "Ce nom d'utilisateur est indisponible, veuillez en choisir un autre."; //. $bdd->error;
   }
 }
 

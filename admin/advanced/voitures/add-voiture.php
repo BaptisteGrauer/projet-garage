@@ -128,9 +128,10 @@ else {
                 <div>
                     <p>Type de carburant :</p>
                     <select name="ctype-carburant" required>
-                        <option value="">Sélectionner un type de carburant</option>
+                        <option value="">Sélectionner un type de motorisation</option>
                         <option value="Essence">Essence</option>
                         <option value="Diesel">Diesel</option>
+                        <option value="Electrique">Electrique</option>
                     </select>
                 </div>
                 <div>

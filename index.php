@@ -29,7 +29,7 @@
                     read_6_voiture_random($bdd);
                 ?>
             </div>
-            <a href="voitures.php">Voir tout</a>
+            <a href="voitures.php" id="voir-tout">Voir tout</a>
         </section>
         <?php include 'include/footer.php'?>
     </body>

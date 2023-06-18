@@ -22,7 +22,7 @@ else {
                 <thead>
                     <tr>
                         <th>N° Réservation</th>
-                        <th>Client</th>
+                        <th>Nom du client</th>
                         <th>Voiture</th>
                         <th>Date de la réservation</th>
                     </tr>

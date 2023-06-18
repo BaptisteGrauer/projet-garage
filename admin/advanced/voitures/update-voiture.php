@@ -181,14 +181,14 @@ else {
                     <input type="text" name="upuissance" placeholder="Puissance" value="<?php echo $puissance?>" required>
                 </div>
                 <div>
-                    <p>Type de carburant :</p>
+                    <p>Type de motorisation :</p>
                     <select name="utype-carburant" required>
                         <?php 
                             if ($type_carburant != ""){
                                 echo "<option value ='" . $type_carburant ."'>" . $type_carburant  . "</option>";
                             }
                             else {
-                                echo "<option value=''>Sélectionner un type de carburant</option>";
+                                echo "<option value=''>Sélectionner un type de motorisation</option>";
                             }
                         ?>
                         <option value="Essence">Essence</option>
@@ -233,17 +233,17 @@ else {
                         $type_carburant = $_POST['utype-carburant'];
                         $description = $_POST['udescription'];
                         if (isset($_FILES['imageToUpload'])) {
-                            move_uploaded_file($_FILES['imageToUpload']['tmp_name'], "$dir" . $_FILES['imageToUpload']['name']);
+                            move_uploaded_file($_FILES['imageToUpload']['tmp_name'], $dir . $_FILES['imageToUpload']['name']);
                             $photo = "/images/voitures/". $_FILES['imageToUpload']['name'];
                         }
                         else {
                             $photo = $row['photo'];
                         }
-                        update_voiture($id, $immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $description, $photo, $bdd);
+                        echo update_voiture($id, $immatriculation, $marque, $modele, $categorie, $date_mise_circulation, $prix, $date_entree_garage, $puissance, $description, $photo, $bdd);
                     }
-                    else {}
                 ?>
             </p>
+            <?php include "all-voitures.php"?>
         </section>
         <?php include '../../../include/footer.php'?>
     </body>

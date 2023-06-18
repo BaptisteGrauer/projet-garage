@@ -21,18 +21,18 @@ else {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>ID voiture</th>
                         <th>Immatriculation</th>
                         <th>Marque</th>
                         <th>Modèle</th>
                         <th>Catégorie</th>
                         <th>Date mise en route</th>
-                        <th>prix</th>
+                        <th>Prix</th>
                         <th>Date d'entrée au garage</th>
                         <th>Puissance</th>
                         <th>Carburant</th>
                         <th>Description</th>
-                        <th>Réservation</th>
+                        <th>Réservé</th>
                         <th>Photo</th>
                     </tr>
                 </thead>
