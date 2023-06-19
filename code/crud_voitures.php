@@ -120,7 +120,7 @@ function read_6_voiture_random($bdd) // Affiche 6 voitures choisies aléatoireme
       echo
         "<div class='voiture'><ul>" .
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
-        "<li>Prix : " . $row['prix'] . "CFP</li>" .
+        "<li>Prix : " . $row['prix'] . " CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
         "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
@@ -141,7 +141,7 @@ function read_all_voiture_text_categorie($categorie, $bdd) // Affiche toutes les
       echo
         "<div class='voiture'><ul>" .
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
-        "<li>Prix : " . $row['prix'] . "CFP</li>" .
+        "<li>Prix : " . $row['prix'] . " CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
         "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
@@ -162,7 +162,7 @@ function read_3_voiture_last($bdd) // Affiche les trois dernières voitures ajou
       echo
         "<div class='voiture'><ul>" .
         "<li><h3>" . $row["marque"] . " " . $row['modele'] . "</h3></li>" .
-        "<li>Prix : " . $row['prix'] . "CFP</li>" .
+        "<li>Prix : " . $row['prix'] . " CFP</li>" .
         "<li>Puissance : " . $row['puissance'] . " Ch</li>" .
         "<li>Motorisation : " . $row['type_carburant'] . "</li>" .
         "<li><a href=$link>Voir plus<img src='/include/icons/expand-more.png'></a></li></ul>" .
