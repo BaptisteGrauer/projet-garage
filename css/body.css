@@ -167,8 +167,9 @@
 }
 
 .voiture > img {
-    max-width: 400px;
-    width: fit-content;
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
 }
 
 .voiture:hover > img {
