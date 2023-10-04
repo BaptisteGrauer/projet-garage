@@ -8,7 +8,7 @@
         <section class="contenu">
             <img src="/include/icons/garageR.png" class="logo">
             <h1>Accueil</h1>
-            <p>Ce site est un de mes projet que j'ai réalisé lors de mon BTS SIO, de ce fait, ce service est purement fictif</p>
+            <p>Ce site est un de mes projet que j'ai réalisé lors de mon BTS SIO. De ce fait, ce service est purement fictif</p>
             <h2>Dernières entrées dans le garage</h2>
             <div class="liste-voiture">
                 <?php 

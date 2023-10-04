@@ -1,6 +1,6 @@
 <?php
 // Ceci est le fichier de configuration pour ce site.
-// les variables ci-dessous sont à modifier et doivent correspondre à votre configuration actuelle.
+// Les variables ci-dessous sont à modifier et doivent correspondre à votre configuration actuelle.
 
 // Informations d'identification de la base de données :
 
@@ -28,5 +28,4 @@
 
     // Chemin absolu du dossier images (pour ajout images voitures), à modifier avec celui de votre ordinateur/serveur.
     $dir = "C:/laragon/www/projet-garage/images/voitures/";
-
 ?>
