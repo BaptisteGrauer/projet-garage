@@ -1,6 +1,6 @@
 # Projet Garage
 
-Projet accessible sur https://garage.baptistegrauer.me/
+Projet accessible sur https://garage-bts.baptistegrauer.me/
 
 ## Description
 

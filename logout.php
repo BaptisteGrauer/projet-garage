@@ -1,9 +1,8 @@
 <?php
-if(isset($_COOKIE)) {
-    setcookie('id',$id,-1);
-    setcookie('nom',$nom,-1);
-    setcookie('admin',$admin,-1);
-    header('Location: /index.php');
-}
+
+session_start();
+
+unset($_SESSION['utilisateur']);
+
 header('Location: /index.php');
 ?>

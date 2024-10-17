@@ -1,8 +1,13 @@
-<?php 
-if (!isset($_COOKIE['nom'])) {
+<?php
+
+session_start();
+
+if (!isset($_SESSION['utilisateur'][1])) {
     header('Location: /index.php');
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +27,7 @@ if (!isset($_COOKIE['nom'])) {
                     $result = $bdd->query($sql);
                     $row = $result->fetch_assoc();
                     if ($row['etat_reservation'] == 0) {
-                        $id_utilisateur = $_COOKIE['id'];
+                        $id_utilisateur = $_SESSION['utilisateur'][0];
                         $date_reservation = date("Y-m-d");
                         create_reservation($id_voiture, $id_utilisateur, $date_reservation, $bdd);
                         update_voiture_reservation($id_voiture, 1, $bdd);
@@ -34,8 +39,8 @@ if (!isset($_COOKIE['nom'])) {
                 }
             ?>
             <div>
-                <?php 
-                    read_all_reservation_user($_COOKIE['id'],$bdd);
+                <?php
+                    read_all_reservation_user($_SESSION['utilisateur'][0],$bdd);
                 ?>
             </div>
             <input type="submit" value="Procéder au paiment (pas encore implémenté)">

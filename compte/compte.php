@@ -1,5 +1,8 @@
-<?php 
-if (!isset($_COOKIE['nom'])) {
+<?php
+
+session_start();
+
+if (!isset($_SESSION['utilisateur'][1])) {
     header('Location: /index.php');
 }
 ?>
@@ -11,7 +14,7 @@ if (!isset($_COOKIE['nom'])) {
     <body>
         <?php include '../include/header.php'?>
         <section class="contenu">
-            <h1>Bienvenue, <?php echo $_COOKIE['nom']?></h1>
+            <h1>Bienvenue, <?php echo $_SESSION['utilisateur'][1]?></h1>
             <div class="section-compte">
                 <img src="../include/icons/cart.png">
                 <a href="reservation.php">Vos réservations</a>
@@ -20,7 +23,7 @@ if (!isset($_COOKIE['nom'])) {
                 <img src="../include/icons/account_settings.png">
                 <a href="compte-update.php">Modifier les informations de votre compte</a>
             </div class="section-compte">
-            <?php if ($_COOKIE['admin'] == 1) {
+            <?php if ($_SESSION['utilisateur'][2] == 1) {
                 echo
                 "<div class='section-compte'>
                     <img src='../include/icons/settings.png'>

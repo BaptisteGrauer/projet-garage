@@ -1,7 +1,11 @@
-<?php 
-if (isset($_COOKIE['admin'])){
-    if ($_COOKIE['admin'] != 1) {
-        header('Location: ../../compte/compte.php');
+<?php
+// exclut tous les comptes qui n'ont pas les droit d'administrateur sur le site (champ admin différent de 1), cela s'applique sur toutes les panneaux d'administration.
+
+session_start();
+
+if (isset($_SESSION['utilisateur'][2])){
+    if ($_SESSION['utilisateur'][2] != 1) {
+        header('Location: compte.php');
     }
 }
 else {

@@ -10,26 +10,27 @@ function connexion($nom, $mdp, $bdd) // Vérifie que les identifiants soient bon
     return "L'utilisateur $nom n'existe pas";
   }
   if ($mdp == $row['mdp']) {
-    gen_user_cookies($nom, $bdd);
+    create_user_session($nom, $bdd);
   } else {
     return "Les identifiants sont incorrects, veuillez vérifier qu'ils soient valides";
   }
 }
 
-function gen_user_cookies($nom, $bdd) { // Génère les cookies d'authentifications de l'utilisateur (-> page connexion) (C'est pas la meilleure méthode mais c'est comme ça)
+function create_user_session($nom, $bdd) { // Génère la session de l'utilisateur (-> page connexion)
     // récupération de l'identifiant d'utilisateur
     $sql = "SELECT id_utilisateur FROM utilisateurs WHERE nom='$nom'";
     $result = $bdd->query($sql);
     $row = $result->fetch_assoc();
     $id = $row["id_utilisateur"];
+
     // récupération des droit de l'utilisateur
     $sql = "SELECT admin FROM utilisateurs WHERE nom='$nom'";
     $result = $bdd->query($sql);
     $row = $result->fetch_assoc();
     $admin = $row["admin"];
-    setcookie('id',$id,time() + 365*24*3600);
-    setcookie('nom',$nom,time() + 365*24*3600);
-    setcookie('admin',$admin,time() + 365*24*3600);
+
+    $_SESSION['utilisateur'] = [$id, $nom, $admin];
+
     header('Location: /compte/compte.php');
     return;
 }

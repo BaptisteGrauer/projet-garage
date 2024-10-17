@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +18,7 @@
             ?>
             <div>
                 <?php
-                    if (isset($_COOKIE['id'])) {
+                    if (isset($_SESSION['utilisateur'][0])) {
                         echo 
                         "<form method='POST' action='compte/reservation.php'>
                             <input type='hidden' name='id_voiture' value='$id_voiture'>

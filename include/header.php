@@ -10,12 +10,12 @@
                 <li><a href="/index.php"><img src="/include/icons/home.png">Accueil</a></li>
                 <li><a href="/voitures.php"><img src="/include/icons/car.png">Parcourir les voitures</a></li>
                 <?php
-                    if (isset($_COOKIE['nom'])){
+                    if (isset($_SESSION['utilisateur'][1])){
                         echo "<li><a href='/compte/compte.php'><img src='/include/icons/account.png'>Bienvenue, "
-                        . $_COOKIE['nom'] .
+                        . $_SESSION['utilisateur'][1] .
                         "<form method='POST' action='/logout.php' class='logout'><input type='submit' value='Se déconnecter'></form></li></a>";
                         echo "<li><a href='/compte/reservation.php'><img src='/include/icons/cart.png'>Mes réservations</a></li>";
-                        if ($_COOKIE['admin'] == 1) {
+                        if ($_SESSION['utilisateur'][2] == 1) {
                             echo "<li><a href='/admin/admin.php'><img src='/include/icons/settings.png'>Panneau d'administration</a></li>";
                         }
                     }

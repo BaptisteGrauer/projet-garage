@@ -1,5 +1,8 @@
-<?php 
-if (!isset($_COOKIE['nom'])) {
+<?php
+
+session_start();
+
+if (!isset($_SESSION['utilisateur'][1])) {
     header('Location: /index.php');
 }
 ?>
@@ -15,14 +18,14 @@ if (!isset($_COOKIE['nom'])) {
             <a href="compte.php"><img src="/include/icons/arrow_back.png">Retour</a>
             <?php 
             include "../code/crud_users.php";
-            $id = $_COOKIE['id'];
+            $id = $_SESSION['utilisateur'][0];
             $sql = "SELECT nom FROM utilisateurs WHERE id_utilisateur='$id'";
             $row = $bdd->query($sql)->fetch_assoc();
             $nom = $row['nom']
             ?>
             <form method="POST" action="compte-update.php" class="formulaire">
                 <!-- Ajouter les champs de mot de passe pour la modification des informations en dehors du panneau d'administration -->
-                <input type="hidden" name="id" value="<?php echo $_COOKIE['id'] ?>" required>
+                <input type="hidden" name="id" value="<?php echo $_SESSION['utilisateur'][0] ?>" required>
                 <p>Modifier le nom d'utilisateur :</p>
                 <input type="text" name="nom" placeholder="Nouveau nom d'utilisateur" value="<?php echo $nom?>" required>
                 <p>Ancien mot de passe :</p>
